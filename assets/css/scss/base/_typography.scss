@@ -1,0 +1,224 @@
+body {
+  font-family: 'Manrope', sans-serif;
+  color: var(--text-color);
+  font-size: 1rem;
+  line-height: 1.5rem;
+  font-weight: 500;
+  @include breakpoint( $lg ) {
+    font-size: 1.125rem;
+    line-height: 1.6875rem;
+  }
+}
+
+h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6 {
+  margin: 0;
+  color: var(--heading-color);
+  font-weight: 600;
+
+  a {
+    color: currentColor;
+    text-decoration: none;
+  }
+
+  + p {
+    margin-top: 0;
+  }
+
+  &:first-child {
+    margin-top: 0;
+  }
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+h1, .h1 {
+  font-size: 2rem;
+  line-height: 2.5rem;
+  @include letter-spacing(-25);
+  margin-bottom: 1.5rem;
+  @include breakpoint( $lg ) {
+    font-size: 4.5rem;
+    line-height: 5rem;
+    font-weight: 500;
+  }
+}
+
+h2, .h2 {
+  font-size: 1.5rem;
+  line-height: 2rem;
+  font-weight: 600;
+  margin-bottom: 1.5rem;
+  @include letter-spacing(-20);
+  @include breakpoint( $lg ) {
+    font-size: 3.5rem;
+    line-height: 4rem;
+    font-weight: 500;
+  }
+}
+
+h3, .h3 {
+  font-size: 1.25rem;
+  line-height: 1.625rem;
+  margin-bottom: 1.5rem;
+  @include letter-spacing(-15);
+  @include breakpoint( $lg ) {
+    font-size: 1.5rem;
+    line-height: 2rem;
+  }
+}
+
+h4, .h4 {
+  font-size: 1.125rem;
+  line-height: 1.5rem;
+  @include breakpoint( $lg ) {
+    font-size: 1.25rem;
+    line-height: 1.625rem;
+  }
+}
+
+h5, .h5 {
+  font-size: 1rem;
+  line-height: 1.375rem;
+  @include breakpoint( $lg ) {
+    font-size: 1.125rem;
+    line-height: 1.5rem;
+  }
+}
+
+h6, .h6 {
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  @include breakpoint( $lg ) {
+    font-size: 1rem;
+    line-height: 1.375rem;
+  }
+}
+
+a {
+  text-decoration: underline;
+
+  &:hover {
+    @media (hover: hover) {
+      text-decoration: none;
+    }
+  }
+}
+
+p {
+
+  &:has(.link) {
+    margin: 2.75rem 0;
+  }
+
+  &:has(.button) {
+    margin: 2rem 0;
+  }
+}
+
+p, ul, ol, blockquote, hr {
+  margin: 1.5rem 0;
+
+  + {
+
+    h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6 {
+      margin-top: 3rem;
+    }
+  }
+
+  &:first-child { margin-top: 0; }
+  &:last-child { margin-bottom: 0; }
+}
+
+ul,
+ol {
+
+}
+
+ul {
+  list-style: none;
+}
+
+hr {
+  background: var(--text-color);
+  height: 1px;
+  border: none;
+}
+
+b, strong {
+  font-weight: 700;
+}
+
+em {
+  font-style: italic;
+}
+
+blockquote {
+
+}
+
+address {
+  font-style: normal;
+}
+
+caption {
+
+}
+
+del {
+
+}
+
+.text-sm {
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  font-weight: 400;
+}
+
+.text-lg {
+  font-weight: 500;
+  @include breakpoint( $lg ) {
+    font-size: 1.5rem;
+    line-height: 2rem;
+  }
+}
+
+.caption {
+  font-weight: 400;
+  font-size: 0.75rem;
+  line-height: 1.125rem;
+}
+
+.kicker {
+  font-size: 0.875rem;
+  line-height: 1.125rem;
+  font-weight: 700;
+}
+
+.siteContent {
+
+  ul {
+    display: flex;
+    flex-direction: column;
+    gap: .25rem;
+    padding-left: 1.5rem;
+    list-style: none;
+
+    li {
+      position: relative;
+
+      &:before {
+        content: '';
+        position: absolute;
+        width: .25rem;
+        height: .25rem;
+        border-radius: 100%;
+        background: currentColor;
+        left: -0.75rem;
+        translate: -50% -50%;
+        top: .75rem;
+      }
+    }
+  }
+}

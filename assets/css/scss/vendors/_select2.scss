@@ -1,0 +1,92 @@
+.select2-container .select2-selection--single {
+  height: 53px;
+  border-radius: 6px;
+  border: 2px solid currentColor;
+  background: transparent;
+  margin: 0;
+}
+
+
+.select2-container--default {
+
+  .select2-selection--single {
+
+    .select2-selection {
+
+      &__rendered {
+        padding: 10px 60px 10px 20px;
+        box-sizing: border-box;
+        display: flex;
+        align-items: center;
+        color: currentColor;
+        font-weight: 400;
+      }
+
+      &__placeholder {
+        color: currentColor;
+        font-style: italic;
+        opacity: .76;
+        font-weight: 400;
+      }
+
+      &__arrow {
+        height: 51px;
+        width: 60px;
+
+        b {
+          border-width: 10px 6px 0 6px;
+          border-top-color: currentColor;
+          margin: 0;
+          transform: translate(-50%,-50%);
+        }
+      }
+    }
+  }
+}
+
+.select2-container--default.select2-container--open .select2-selection--single .select2-selection__arrow b {
+  border-bottom-color: currentColor;
+  border-width: 0 6px 10px 6px;
+}
+
+.select2-container--default.select2-container--open.select2-container--below .select2-selection--single,
+.select2-container--default.select2-container--open.select2-container--below .select2-selection--multiple,
+.select2-container--default.select2-container--open.select2-container--above .select2-selection--single,
+.select2-container--default.select2-container--open.select2-container--above .select2-selection--multiple{
+  border-radius: 6px;
+}
+
+.select2-dropdown {
+  border-radius: 6px;
+  background: #FFFBF8;
+  border: 2px solid currentColor;
+  padding: 0;
+  overflow: hidden;
+}
+
+.select2-container--open .select2-dropdown--above {
+  border-radius: 6px;
+  border: 2px solid currentColor;
+  margin-bottom: -2px;
+}
+
+.select2-container--open .select2-dropdown--below {
+  border-radius: 6px;
+  border: 2px solid currentColor;
+  margin-top: -2px;
+}
+
+.select2-results__option {
+  padding: 6px 22px;
+  min-height: 46px;
+  display: flex;
+  align-items: center;
+
+  &--highlighted {
+    background: #F8E3D5;
+  }
+}
+
+.select2-container--default .select2-results>.select2-results__options {
+  //max-height: 250px;
+}

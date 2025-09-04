@@ -1,0 +1,63 @@
+.tns-outer {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+.tns-ovh {
+
+}
+
+
+.tns-carousel {
+  display: flex;
+  align-items: stretch;
+}
+
+.tns-controls {
+  display: flex;
+  justify-content: center;
+
+  button {
+
+    &[data-controls="prev"] {
+
+    }
+
+    &[data-controls="next"] {
+
+    }
+
+    &[disabled] {
+      visibility: hidden;
+      opacity: 0;
+    }
+
+    &:hover {
+      @media (hover: hover) {
+
+      }
+    }
+  }
+}
+
+
+.tns-nav {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+
+  button {
+    width: .5rem;
+    height: .5rem;
+    border-radius: 100%;
+    background: currentColor;
+    opacity: .5;
+    transition: all .3s;
+
+    &.tns-nav-active {
+      opacity: 1;
+    }
+  }
+}

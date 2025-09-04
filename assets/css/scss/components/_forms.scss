@@ -1,0 +1,76 @@
+input[type="text"],
+input[type="number"],
+input[type="tel"],
+input[type="email"],
+input[type="date"],
+input[type="search"],
+input[type="url"],
+input[type="password"],
+textarea,
+select {
+  width: 100%;
+  border-radius: 0;
+  margin: 0;
+  border: 1px solid currentColor;
+}
+
+select {
+  padding-top: 0;
+  padding-bottom: 0;
+  background: var(--icon-angle) no-repeat right 12px center;
+}
+
+textarea {
+
+}
+
+@include placeholder {
+  font-style: italic;
+  font-size: 1.5rem;
+  font-weight: 500;
+}
+
+
+.formContainer {
+
+}
+
+.formContent {
+
+}
+
+.formFields {
+
+}
+
+.formField {
+  position: relative;
+  display: block;
+  width: 100%;
+
+  &__header {
+
+  }
+
+  &__title {
+    display: block;
+    font-weight: 700;
+  }
+
+  &__body {
+
+  }
+
+  span.error {
+    text-align: right;
+    font-size: 14px;
+    color: yellow;
+    position: absolute;
+    top: 100%;
+    right: 0;
+  }
+
+  &--fullWidth {
+    width: 100%;
+  }
+}

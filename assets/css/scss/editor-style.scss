@@ -1,0 +1,12 @@
+@import 'abstracts/mixins';
+@import 'abstracts/colors';
+@import 'abstracts/sizes';
+@import 'abstracts/icons';
+@import 'base/reset';
+@import 'base/typography';
+
+@import 'components/buttons';
+
+.mce-content-body {
+  padding: 10px;
+}

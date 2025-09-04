@@ -1,0 +1,13 @@
+table {
+  width: 100%;
+  max-width: 100%;
+
+  th,
+  td {
+    vertical-align: top;
+  }
+
+  thead th {
+    vertical-align: bottom;
+  }
+}

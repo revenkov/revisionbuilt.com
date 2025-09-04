@@ -1,0 +1,131 @@
+.siteFooter {
+  background: #000000 url("../images/footer-bg-mobile.jpg") no-repeat center top;
+  background-size: cover;
+  color: #ffffff;
+  padding: 64px 0;
+  text-align: center;
+
+  a {
+    text-decoration: none;
+    opacity: .8;
+    transition: opacity .3s;
+
+    &:hover {
+      @media (hover: hover) {
+        opacity: 1;
+      }
+    }
+  }
+
+  &__inner {
+    display: flex;
+    flex-direction: column;
+    gap: 64px;
+  }
+
+  &__col2 {
+    display: flex;
+    flex-direction: column;
+    gap: 64px;
+  }
+
+  &__logoContainer {
+    display: block;
+    width: 118px;
+    opacity: 1 !important;
+    margin: 0 auto 32px;
+  }
+
+  &__address {
+    margin-bottom: 32px;
+  }
+
+  &__contacts {
+    margin-bottom: 32px;
+  }
+
+  &__logos {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+  }
+
+  &__blocks {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+  }
+
+  &__block {
+    display: flex;
+    flex-direction: column;
+    gap: .5rem;
+
+    &Title {
+      font-size: 1.25rem;
+      line-height: 1.6875rem;
+      font-weight: 700;
+    }
+
+    &Content {
+
+      ul {
+        font-size: 1.125rem;
+        line-height: 1.6875rem;
+        display: flex;
+        flex-direction: column;
+        gap: .5rem
+      }
+    }
+  }
+
+  &__socials {
+    display: flex;
+    justify-content: center;
+    gap: 1.25rem;
+    align-items: center;
+  }
+
+  &__copyright {
+    font-weight: 400;
+    font-size: .875rem;
+    line-height: 1.25rem;
+    color: #d4bdbc;
+
+    a {
+      opacity: 1;
+      text-decoration: underline;
+      transition: color .3s;
+
+      &:hover {
+        @media (hover: hover) {
+          color: #ffffff;
+        }
+      }
+    }
+  }
+}
+
+
+.social {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  &:before {
+    content: '';
+    background: currentColor;
+    mask: no-repeat center;
+    mask-size: contain;
+    width: 20px;
+    height: 20px;
+  }
+
+  &--instagram:before { mask-image: var(--icon-instagram); }
+  &--youtube:before { mask-image: var(--icon-youtube); }
+  &--facebook-f:before { mask-image: var(--icon-facebook-f); width: 11px; }
+  &--x:before { mask-image: var(--icon-x); }
+  &--pinterest:before { mask-image: var(--icon-pinterest); }
+  &--linkedin:before { mask-image: var(--icon-linkedin); }
+  &--tiktok:before { mask-image: var(--icon-tiktok); }
+}

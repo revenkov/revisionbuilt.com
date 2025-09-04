@@ -1,0 +1,60 @@
+.wpcf7 form {
+
+  .wpcf7-form-control-wrap {
+    display: block;
+  }
+
+  span.wpcf7-not-valid-tip {
+    text-align: right;
+    font-size: 14px;
+    color: red;
+    position: absolute;
+    top: 100%;
+    right: 0;
+  }
+
+  .wpcf7-response-output {
+    text-align: center;
+    margin: 30px 0 0;
+    padding: 10px 20px;
+  }
+
+  div.wpcf7-validation-errors,
+  div.wpcf7-mail-sent-ok {
+    border: none;
+  }
+
+  div.wpcf7-validation-errors {
+    color: red;
+  }
+
+  div.wpcf7-mail-sent-ok {
+
+  }
+
+  .btnWrap {
+    position: relative;
+
+    .ajax-loader {
+      position: absolute;
+      top: 50%;
+      right: -50px;
+      transform: translateY(-50%);
+      margin: 0;
+    }
+  }
+}
+
+
+.wpcf7-checkbox {
+  display: block;
+
+  .wpcf7-list-item {
+    display: flex;
+    margin: 0;
+
+    label {
+      display: block;
+    }
+  }
+}

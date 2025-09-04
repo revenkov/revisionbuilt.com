@@ -1,0 +1,16 @@
+{
+  "name": "selectrum/selectrum",
+  "description": "",
+  "type": "wordpress-theme",
+  "autoload": {
+    "psr-4": {
+      "Selectrum\\": "src/"
+    }
+  },
+  "files": [
+    "src/functions.php"
+  ],
+  "require": {
+    "php": ">=8.1"
+  }
+}

@@ -1,0 +1,120 @@
+/// Animate given property
+/// @access public
+/// @param {String} $property - Animation property (e.g all, opacity etc.)
+@mixin transition($arg...) {
+  -webkit-transition: $arg;
+  -moz-transition: $arg;
+  -ms-transition: $arg;
+  -o-transition: $arg;
+  transition: $arg;
+}
+
+
+/// Scale by given amount
+/// @access public
+/// @param {String}
+@mixin transform($arg) {
+  -moz-transform: $arg;
+  -webkit-transform: $arg;
+  -o-transform: $arg;
+  -ms-transform: $arg;
+  transform: $arg;
+}
+
+
+/// Calculating block layout- see more here http://css-tricks.com/video-screencasts/132-quick-useful-case-sass-math-mixins/
+/// @access public
+/// @param {Integer} $numPerRow - Number of blocks per row
+/// @param {String} $margin - The margin (in percentage)
+/// usage: @include row-builder(3, 1%);
+@mixin row-builder($numPerRow, $margin) {
+  width: ((100% - (($numPerRow - 1) * $margin)) / $numPerRow);
+
+  &:nth-child(n) {
+    margin-bottom: $margin;
+    margin-right: $margin;
+  }
+  &:nth-child(#{$numPerRow}n) {
+    margin-right: 0;
+  }
+}
+
+
+/// Set box sizing
+/// @access public
+/// @param {String} $model - box sizing property
+/// usage: @include box-sizing(border-box);
+@mixin box-sizing($model) {
+  box-sizing: $model;
+  -moz-box-sizing: $model;
+  -ms-box-sizing: $model;
+}
+
+
+// Colors must be in format #nnnnnn and not #nnn for IE
+// usage: @include linear-gradient(#dddddd, #ffffff);
+@mixin linear-gradient ($c1, $c2) {
+  background: mix($c1, $c2);
+  background: -webkit-gradient(linear, 0 0, 0 bottom, from($c1), to($c2));
+  background: -webkit-linear-gradient($c1, $c2);
+  background: -moz-linear-gradient($c1, $c2);
+  background: -ms-linear-gradient($c1, $c2);
+  background: -o-linear-gradient($c1, $c2);
+  background: linear-gradient($c1, $c2);
+  -pie-background: linear-gradient($c1, $c2);
+  behavior: asset-url('pie.htc');
+}
+
+/// usage: @include opacity(0.5);
+@mixin opacity($opacity) {
+  opacity: $opacity;
+  filter: unquote("progid:DXImageTransform.Microsoft.Alpha(Opacity=#{round($opacity * 100)})");
+}
+
+
+@mixin appearancefix {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
+@mixin placeholder {
+  ::-webkit-input-placeholder {
+    @content;
+  }
+  :-moz-placeholder {
+    @content;
+  }
+  ::-moz-placeholder {
+    @content;
+  }
+  :-ms-input-placeholder {
+    @content;
+  }
+}
+
+@mixin letter-spacing($size){
+  letter-spacing: $size/1000*1em;
+}
+
+@mixin font-size( $size ) {
+  font-size: $size/16px*1rem;
+}
+
+@mixin grayscale() {
+  filter: url("data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\'><filter id=\'grayscale\'><feColorMatrix type=\'matrix\' values=\'0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0 0 0 1 0\'/></filter></svg>#grayscale"); /* Firefox 3.5+ */
+  filter: gray; /* IE6-9 */
+  filter: grayscale(100%);
+  -webkit-filter: grayscale(100%); /* Chrome 19+ & Safari 6+ */
+
+  &:hover {
+    filter: none;
+    -webkit-filter: grayscale(0%);
+  }
+}
+
+@mixin breakpoint( $breakpoint ) {
+  @media (min-width: $breakpoint) {
+    @content;
+  }
+}
