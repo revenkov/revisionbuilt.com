@@ -20,8 +20,15 @@
 }
 
 
+.introBlock {
+  @include breakpoint( $desktop ) {
+    width: 50%;
+  }
+}
+
+
 .serviceBlock {
-  padding: 62px 0;
+  padding: var(--section-margin) 0;
 
   &:nth-child(odd) {
     background: var(--color-neutral-100);
@@ -29,20 +36,42 @@
 
   &__header {
     margin-bottom: 24px;
+    @include breakpoint( $desktop ) {
+      margin-bottom: 40px;
+    }
   }
 
   &__cols {
     display: flex;
     flex-wrap: wrap;
+    justify-content: space-between;
     gap: 24px;
   }
 
   &__imageCol {
     width: 100%;
+    @include breakpoint( $desktop ) {
+      width: calc( ( 100% - var(--grid-gap)*3 ) / 2 );
+    }
+  }
+
+  &__mediaBlock {
+    --padding-bottom: 61.45%;
   }
 
   &__textCol {
     width: 100%;
+    @include breakpoint( $desktop ) {
+      width: calc( ( 100% - var(--grid-gap)*3 ) / 2 );
+      display: flex;
+      align-items: center;
+    }
+
+    p:not(.text-lg) {
+      @include breakpoint( $desktop ) {
+        max-width: 550px;
+      }
+    }
   }
 }
 
@@ -50,25 +79,78 @@
 .featuredProjects {
 
   &__header {
-    margin-bottom: 2rem;
+    margin-bottom: 32px;
+    @include breakpoint( $desktop ) {
+      margin-bottom: 48px;
+    }
   }
 
   &__listing {
     overflow: hidden;
     margin-right: calc( -1 * var(--container-padding-x) );
     padding-right: 43px;
+    @include breakpoint( $desktop ) {
+      margin: 0;
+      padding: 0;
+    }
 
     .tns-ovh {
       overflow: visible;
     }
   }
 
+  &__items {
+    @include breakpoint( $desktop ) {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: stretch;
+      margin: 0 calc(-1 * var(--grid-gap) / 2);
+      gap: 96px 0;
+    }
+  }
+
   &__item {
     opacity: .4;
     transition: opacity .3s;
+    @include breakpoint( $desktop ) {
+      opacity: 1;
+      padding: 0 calc( var(--grid-gap)/2 );
+    }
 
     &.tns-slide-active {
       opacity: 1;
+    }
+
+    &:nth-child(4n + 1),
+    &:nth-child(4n + 4) {
+      @include breakpoint( $desktop ) {
+        width: calc( 100% / var(--grid-columns) * 8 );
+      }
+
+      .projectTeaser {
+
+        &__mediaBlock {
+          @include breakpoint( $desktop ) {
+            --padding-bottom: calc( (100% - var(--grid-gap)) * .535 );
+          }
+        }
+      }
+    }
+
+    &:nth-child(4n + 2),
+    &:nth-child(4n + 3) {
+      @include breakpoint( $desktop ) {
+        width: calc( 100% / var(--grid-columns) * 4 );
+      }
+
+      .projectTeaser {
+
+        &__mediaBlock {
+          @include breakpoint( $desktop ) {
+            --padding-bottom: 107%;
+          }
+        }
+      }
     }
   }
 }
@@ -80,6 +162,10 @@
   flex-direction: column;
   gap: 20px;
   border-bottom: 1px solid var(--color-neutral-300);
+  height: 100%;
+  @include breakpoint( $desktop ) {
+    gap: 16px;
+  }
 
   &__imageContainer {
 
@@ -91,11 +177,47 @@
 
   &__textContainer {
     flex: 1;
-    padding-bottom: 40px;
+    padding: 0 40px 40px 0;
+    @include breakpoint( $desktop ) {
+      padding-bottom: 1rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+    }
+  }
+
+  &__categories {
+    display: none;
+    @include breakpoint( $desktop ) {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .5rem;
+      padding-bottom: .75rem;
+      margin-bottom: auto;
+    }
+  }
+
+  &__category {
+    display: flex;
+    align-items: center;
+    background: var(--color-neutral-100);
+    padding: 0 .75rem;
+    font-weight: 500;
+    font-size: .75rem;
+    line-height: 1rem;
+    min-height: 1.5rem;
   }
 
   &__title {
     margin-bottom: .75rem;
+    @include breakpoint( $desktop ) {
+      @include letter-spacing(-10);
+      margin-bottom: .375rem;
+    }
+  }
+
+  &__subtitle {
+    line-height: 1.375rem;
   }
 
   &:after {
@@ -109,6 +231,9 @@
     height: 1.25rem;
     background-color: var(--color-primary-500);
     rotate: -45deg;
+    @include breakpoint( $desktop ) {
+      bottom: 16px;
+    }
   }
 
   &__overlayLink {

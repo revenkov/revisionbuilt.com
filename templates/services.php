@@ -17,7 +17,7 @@ if ( !empty( $intro_content ) ) :
 ?>
 <div class="section">
     <div class="container">
-        <?php echo $intro_content; ?>
+        <div class="introBlock"><?php echo $intro_content; ?></div>
     </div>
 </div>
 <?php endif; ?>
@@ -86,7 +86,9 @@ if ( !empty( $posts ) ) :
                                     <div class="mediaBlock projectTeaser__mediaBlock"><?php echo wp_get_attachment_image( $images[0]['ID'], 'full' ); ?></div>
                                 </div>
                                 <div class="projectTeaser__textContainer">
-                                    <div class="projectTeaser__categories"></div>
+                                    <div class="projectTeaser__categories">
+                                        <div class="projectTeaser__category"><?php echo implode('</div><div class="projectTeaser__category">', array_column($categories, 'name')); ?></div>
+                                    </div>
                                     <h3 class="projectTeaser__title"><a href="<?php echo get_the_permalink(); ?>"><?php the_title(); ?></a></h3>
                                     <div class="projectTeaser__subtitle"><?php echo $main_content['subtitle']; ?></div>
                                 </div>

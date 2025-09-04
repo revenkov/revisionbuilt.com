@@ -334,6 +334,9 @@ jQuery(document).ready( function($) {
 
 
     $('.featuredProjects').each(function(index, element) {
+        if ( windowWidth >= 640 ) {
+            return;
+        }
         const $element = $(element);
         const $container = $element.find('[class*="__items"]');
         tns({

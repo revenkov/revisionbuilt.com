@@ -7,7 +7,7 @@
   &__imageContainer {
     position: relative;
     padding-bottom: 128.2%;
-    @include breakpoint( $tablet ) {
+    @include breakpoint( $xs ) {
       padding-bottom: 35.4%;
     }
   }
@@ -31,5 +31,9 @@
 
   &__textContainer {
     padding: 10vw 0;
+    max-width: 880px;
+    @include breakpoint( $lg ) {
+      padding: 72px 0;
+    }
   }
 }

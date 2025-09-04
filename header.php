@@ -48,23 +48,26 @@ use Selectrum\WalkerNavMenu;
         <div class="container siteNav__container">
             <div class="siteNav__inner">
                 <div class="siteNav__inner2">
-	                <?php
-	                wp_nav_menu( array(
-		                'theme_location' => 'primary_menu',
-		                'menu_class'     => 'primaryMenu',
-		                'menu_id'        => 'primaryMenu',
-		                'container'      => false,
-		                'walker'         => new WalkerNavMenu()
-	                ) );
-	                ?>
-
-                    <?php
-                    get_template_part('parts/button', false, [
-                        'title' => __('Book a consultation', 'selectrum'),
-                        'target' => '_blank',
-                        'url' => '#'
-                    ]);
-                    ?>
+                    <div class="siteNav__menu">
+                        <?php
+                        wp_nav_menu( array(
+                            'theme_location' => 'primary_menu',
+                            'menu_class'     => 'primaryMenu',
+                            'menu_id'        => 'primaryMenu',
+                            'container'      => false,
+                            'walker'         => new WalkerNavMenu()
+                        ) );
+                        ?>
+                    </div>
+                    <div class="siteNav__buttons">
+                        <?php
+                        get_template_part('parts/button', false, [
+                                'title' => __('Book a consultation', 'selectrum'),
+                                'target' => '_blank',
+                                'url' => '#'
+                        ]);
+                        ?>
+                    </div>
                 </div>
             </div>
         </div>

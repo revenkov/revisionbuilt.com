@@ -14,13 +14,13 @@
   transition: visibility .3s, opacity .3s;
   //background: url("/_resources/layouts/390/menu.jpg") no-repeat center top;
   //background-size: auto;
-  @include breakpoint( $laptop ) {
+  @include breakpoint( $desktop ) {
     overflow: visible;
     visibility: visible;
     opacity: 1;
     height: 0;
     padding: 0;
-    top: calc( var(--header-height) / 2 );
+    top: 60px;
     z-index: 4000;
   }
 
@@ -29,6 +29,9 @@
     position: absolute;
     left: var(--container-padding-x);
     top: 16px;
+    @include breakpoint( $lg ) {
+      display: none;
+    }
   }
 
   &__logoImage {
@@ -42,6 +45,9 @@
     width: 80px;
     height: 80px;
     cursor: pointer;
+    @include breakpoint( $lg ) {
+      display: none;
+    }
 
     span {
       position: absolute;
@@ -66,14 +72,16 @@
   }
 
   &__inner2 {
-    @include breakpoint( $laptop ) {
+    @include breakpoint( $lg ) {
       position: absolute;
       top: 50%;
       translate: 0 -50%;
       left: 300px;
       right: 0;
       display: flex;
+      align-items: center;
       justify-content: flex-end;
+      gap: 32px;
     }
   }
 
@@ -91,10 +99,10 @@
   display: flex;
   flex-direction: column;
   gap: 32px;
-  @include breakpoint( $md ) {
+  @include breakpoint( $desktop ) {
     flex-direction: row;
     align-items: center;
-    gap: 1rem;
+    padding: 0;
   }
 
   >li {
@@ -108,8 +116,12 @@
 
     >.menu-item-link-wrapper {
       display: flex;
+      flex-direction: row-reverse;
       align-items: stretch;
       gap: .5rem;
+      @include breakpoint( $desktop ) {
+        flex-direction: row;
+      }
 
       >a {
         position: relative;
@@ -123,6 +135,13 @@
         @include letter-spacing(-10);
         color: var(--color-neutral-500);
         transition: color .3s;
+        @include breakpoint( $desktop ) {
+          font-size: 1.125rem;
+          line-height: 1.5rem;
+          font-weight: 600;
+          color: #ffffff;
+          border-bottom: 2px solid transparent;
+        }
 
         &:hover {
           @media (hover: hover) {
@@ -134,7 +153,6 @@
       >.menu-item-button {
         position: relative;
         width: 10px;
-        order: -1;
 
         &:before,
         &:after {
@@ -147,6 +165,9 @@
           top: 50%;
           translate: -50% -50%;
           transition: opacity .3s;
+          @include breakpoint( $desktop ) {
+            background: #ffffff;
+          }
         }
 
         &:after {
@@ -201,6 +222,19 @@
 
         >a {
           color: #ffffff;
+          @include breakpoint( $desktop ) {
+            border-bottom-color: var(--color-primary-500);
+          }
+        }
+
+        >.menu-item-button {
+
+          &:after {
+            opacity: 0;
+            @include breakpoint( $desktop ) {
+              opacity: 1;
+            }
+          }
         }
       }
 
@@ -221,25 +255,6 @@
 
     &.menu-item-has-children {
       cursor: pointer;
-    }
-
-    &.open {
-
-      >.menu-item-link-wrapper {
-
-        >a {
-          color: #ffffff;
-        }
-
-        >.menu-item-button {
-
-          &:after {
-            opacity: 0;
-          }
-        }
-      }
-
-
     }
   }
 }

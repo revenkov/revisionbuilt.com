@@ -22,6 +22,9 @@
 
   &__logoImage {
     width: 118px;
+    @include breakpoint( $desktop ) {
+      width: 180px;
+    }
   }
 
   &--sticky {
@@ -29,7 +32,7 @@
   }
 
   &.hidden {
-    @include breakpoint( $laptop ) {
+    @include breakpoint( $lg ) {
       translate: 0 -100%;
     }
   }
@@ -50,7 +53,7 @@
   align-items: center;
   min-height: 48px;
   transition: visibility .3s, opacity .3s;
-  @include breakpoint( $laptop ) {
+  @include breakpoint( $lg ) {
     display: none;
   }
 

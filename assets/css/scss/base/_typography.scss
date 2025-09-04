@@ -42,6 +42,7 @@ h1, .h1 {
     font-size: 4.5rem;
     line-height: 5rem;
     font-weight: 500;
+    margin-bottom: 2rem;
   }
 }
 
@@ -66,6 +67,8 @@ h3, .h3 {
   @include breakpoint( $lg ) {
     font-size: 1.5rem;
     line-height: 2rem;
+    letter-spacing: 0;
+    margin-bottom: 1.75rem;
   }
 }
 
@@ -178,6 +181,7 @@ del {
 
 .text-lg {
   font-weight: 500;
+  margin: 1.75rem 0;
   @include breakpoint( $lg ) {
     font-size: 1.5rem;
     line-height: 2rem;
@@ -204,6 +208,10 @@ del {
     gap: .25rem;
     padding-left: 1.5rem;
     list-style: none;
+    @include breakpoint( $desktop ) {
+      padding-left: 1.75rem;
+      gap: .5rem;
+    }
 
     li {
       position: relative;
@@ -218,7 +226,14 @@ del {
         left: -0.75rem;
         translate: -50% -50%;
         top: .75rem;
+        @include breakpoint( $desktop ) {
+          left: -0.875rem;
+        }
       }
+    }
+
+    &:not(:first-child) {
+      margin-top: -.75rem
     }
   }
 }
