@@ -123,7 +123,6 @@
 .projectsListing {
   display: flex;
   flex-direction: column;
-  gap: 96px 0;
 
   &__items {
     @include breakpoint( $laptop ) {

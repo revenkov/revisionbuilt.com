@@ -592,7 +592,6 @@ address {
 .projectsListing {
   display: flex;
   flex-direction: column;
-  gap: 96px 0;
 }
 @media (min-width: 1200px) {
   .projectsListing__items {
