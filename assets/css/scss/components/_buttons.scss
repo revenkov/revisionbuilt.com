@@ -25,6 +25,10 @@
     background: var(--color-primary-500);
   }
 
+  &--plus:after {
+    mask-image: var(--icon-plus);
+  }
+
   &:hover & {
     @media (hover: hover) {
 

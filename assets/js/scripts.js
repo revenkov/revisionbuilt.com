@@ -149,18 +149,19 @@ jQuery(document).ready( function($) {
     });
 
 
-    $('.mosaic').each(function (index, listingElement) {
+    /*
+    $('.projectsListing').each(function (index, listingElement) {
         var $listing = $(listingElement);
-        var $pagination = $listing.find('.mosaic__pagination');
-        var $itemsContainer = $listing.find('.mosaic__items');
-        var itemSelector = '.mosaic__item';
-        var step = windowWidth < 640 ? 3 : ( windowWidth < 1120 ? 6 : 12 );
+        var $pagination = $listing.find('.projectsListing__pagination');
+        var $itemsContainer = $listing.find('.projectsListing__items');
+        var itemSelector = '.projectsListing__item';
+        var step = windowWidth < 640 ? 3 : 6;
         var visibleItemsNum = step;
         var filterValue = '*';
         var matchCounter = 0;
         $itemsContainer.isotope({
             itemSelector: itemSelector,
-            //layoutMode: 'fitRows',
+            layoutMode: 'fitRows',
             filter: isotopeFilter
         });
 
@@ -181,8 +182,9 @@ jQuery(document).ready( function($) {
 
         $pagination.toggle( matchCounter > visibleItemsNum );
 
-        $pagination.on( 'click', 'button', showMoreItems );
+        $pagination.on( 'click', '.link', showMoreItems );
     });
+    */
 
 
     /**
@@ -334,7 +336,7 @@ jQuery(document).ready( function($) {
             return;
         }
         const $element = $(element);
-        const $container = $element.find('[class*="__items"]');
+        const $container = $element.find('.projectsListing__items');
         tns({
             container: $container[0],
             loop: false,
@@ -548,18 +550,17 @@ jQuery(document).ready( function($) {
     */
 
 
-    /*
     //Listing pagination
     $window.on('load', function () {
-        $('.postsListing').each(function (index, listingElement) {
+        $('.projectsListing').each(function (index, listingElement) {
             var $listing = $(listingElement);
             var $filterDropdown = $listing.find('select');
             var $filterButtons = $listing.find('.blogCategories__buttons');
-            var $itemsContainer = $listing.find('.postsListing__items');
-            var itemSelector = '.postsListing__item';
+            var $itemsContainer = $listing.find('.projectsListing__items');
+            var itemSelector = '.projectsListing__item';
             var $items = $itemsContainer.find(itemSelector);
-            var $pagination = $listing.find('.postsListing__pagination');
-            var step = windowWidth < 640 ? 4 : ( windowWidth < 1120 ? 6 : 9 );
+            var $pagination = $listing.find('.projectsListing__pagination');
+            var step = windowWidth < 640 ? 3 : 6;
             var visibleItemsNum = step;
             var filterValue = '*';
             var matchCounter = 0;
@@ -651,10 +652,10 @@ jQuery(document).ready( function($) {
                 filterValue = $(this).val();
                 applyIsotopeFilter();
             });
-            $pagination.on('click', 'button', showMoreItems);
+            $pagination.on('click', '.link', showMoreItems);
         });
     });
-    */
+
 
 
     /**

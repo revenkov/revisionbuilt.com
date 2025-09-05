@@ -83,29 +83,14 @@ if ( !empty( $posts ) ) :
                 </div>
             </div>
             <div class="featuredProjects__listing">
-                <div class="featuredProjects__items">
-                    <?php foreach ( $posts as $post ) : setup_postdata($post); ?>
-                        <div class="featuredProjects__item">
-                            <?php
-                            $categories = get_field('categories');
-                            $main_content = get_field('main_content');
-                            $images = get_field('images');
-                            ?>
-                            <div class="projectTeaser">
-                                <div class="projectTeaser__imageContainer">
-                                    <div class="mediaBlock projectTeaser__mediaBlock"><?php echo wp_get_attachment_image( $images[0]['ID'], 'full' ); ?></div>
-                                </div>
-                                <div class="projectTeaser__textContainer">
-                                    <div class="projectTeaser__categories">
-                                        <div class="projectTeaser__category"><?php echo implode('</div><div class="projectTeaser__category">', array_column($categories, 'name')); ?></div>
-                                    </div>
-                                    <h3 class="projectTeaser__title"><a href="<?php echo get_the_permalink(); ?>"><?php the_title(); ?></a></h3>
-                                    <div class="projectTeaser__subtitle"><?php echo $main_content['subtitle']; ?></div>
-                                </div>
-                                <a class="projectTeaser__overlayLink" href="<?php echo get_the_permalink(); ?>" title="<?php the_title(); ?>"></a>
+                <div class="projectsListing">
+                    <div class="projectsListing__items">
+                        <?php foreach ( $posts as $post ) : setup_postdata($post); ?>
+                            <div class="projectsListing__item">
+                                <?php get_template_part('parts/project-teaser'); ?>
                             </div>
-                        </div>
-                    <?php endforeach; wp_reset_postdata(); ?>
+                        <?php endforeach; wp_reset_postdata(); ?>
+                    </div>
                 </div>
             </div>
         </div>

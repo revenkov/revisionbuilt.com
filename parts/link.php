@@ -4,7 +4,7 @@ if ( empty( $args ) ) {
 }
 ?>
 <p>
-    <a class="link" href="<?php echo $args['url']; ?>" <?php if ( !empty( $args['target'] ) ) : ?>target="_blank"<?php endif; ?>>
+    <a class="link <?php echo $args['classes'] ?? ''; ?>" href="<?php echo $args['url']; ?>" <?php if ( !empty( $args['target'] ) ) : ?>target="_blank"<?php endif; ?>>
         <span class="link__text"><?php echo $args['title']; ?></span>
     </a>
 </p>
