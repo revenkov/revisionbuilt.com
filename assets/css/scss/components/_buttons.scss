@@ -29,6 +29,18 @@
     mask-image: var(--icon-plus);
   }
 
+  &--prev {
+    flex-direction: row-reverse;
+
+    &:after {
+      rotate: 180deg;
+    }
+  }
+
+  &--back:after {
+    display: none;
+  }
+
   &:hover & {
     @media (hover: hover) {
 

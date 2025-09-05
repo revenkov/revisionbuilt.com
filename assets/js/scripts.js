@@ -331,34 +331,41 @@ jQuery(document).ready( function($) {
     */
 
 
-    $('.featuredProjects').each(function(index, element) {
-        if ( windowWidth >= 1200 ) {
-            return;
-        }
-        const $element = $(element);
-        const $container = $element.find('.projectsListing__items');
-        tns({
-            container: $container[0],
-            loop: false,
-            gutter: 16,
-            autoplay: false,
-            autoplayButtonOutput: false,
-            autoplayHoverPause: true,
-            nav: false,
-            navPosition: 'bottom',
-            controls: false,
-            controlsPosition: 'top',
-            controlsText: ['', ''],
-            responsive: {
-                0: {
-                    items: 1
-                },
-                640: {
-                    items: 2
-                }
+    let tinySlider = null;
+    function featuredProjectsHandler() {
+        if ( windowWidth < 1200 ) {
+            if ( tinySlider === null || tinySlider.destroy === null ) {
+                tinySlider = tns({
+                    container: '.featuredProjects .projectsListing__items',
+                    loop: false,
+                    gutter: 16,
+                    autoplay: false,
+                    autoplayButtonOutput: false,
+                    autoplayHoverPause: true,
+                    nav: false,
+                    navPosition: 'bottom',
+                    controls: false,
+                    controlsPosition: 'top',
+                    controlsText: ['', ''],
+                    responsive: {
+                        0: {
+                            items: 1
+                        },
+                        640: {
+                            items: 2
+                        }
+                    }
+                });
             }
-        });
-    });
+        } else {
+            if ( tinySlider !== null && tinySlider.destroy !== null ) {
+                tinySlider.destroy();
+            }
+        }
+    }
+    featuredProjectsHandler();
+    $window.on('resize', featuredProjectsHandler);
+
 
 
     $('.logosCarousel').each(function(index, element) {

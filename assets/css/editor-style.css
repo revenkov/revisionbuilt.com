@@ -45,16 +45,22 @@
 }
 @media (min-width: 640px) {
   :root {
-    --container-padding-x: 3.75vw;
+    --container-padding-x: 32px;
     --header-height: 140px;
   }
 }
 @media (min-width: 1200px) {
   :root {
+    --container-padding-x: 48px;
     --header-height: 0;
     --section-margin: 96px;
     --grid-columns: 12;
     --grid-gap: 24px;
+  }
+}
+@media (min-width: 1600px) {
+  :root {
+    --container-padding-x: 72px;
   }
 }
 
@@ -393,6 +399,15 @@ address {
 }
 .link--plus:after {
   mask-image: var(--icon-plus);
+}
+.link--prev {
+  flex-direction: row-reverse;
+}
+.link--prev:after {
+  rotate: 180deg;
+}
+.link--back:after {
+  display: none;
 }
 @media (hover: hover) {
   .link:hover .link__text {

@@ -131,6 +131,10 @@
       align-items: stretch;
       margin: 0 calc(-1 * var(--grid-gap) / 2);
     }
+
+    &.tns-slider {
+      margin: 0;
+    }
   }
 
   &__item {
@@ -145,6 +149,7 @@
     }
 
     &.tns-item {
+      padding: 0;
       opacity: .4;
       transition: opacity .3s;
       @include breakpoint( $laptop ) {
@@ -159,7 +164,7 @@
     &:nth-child(4n + 1),
     &:nth-child(4n + 4) {
       @include breakpoint( $laptop ) {
-        width: calc( 100% / var(--grid-columns) * 8 );
+        width: calc( 100% / var(--grid-columns) * 8 - 1px );
       }
 
       .projectTeaser {
@@ -464,5 +469,25 @@
       border-bottom: 1px solid var(--color-neutral-300);
       margin-bottom: 40px;
     }
+  }
+}
+
+
+.postNav {
+  position: relative;
+  text-align: center;
+
+  &__prev,
+  &__next {
+    position: absolute;
+    top: 0;
+  }
+
+  &__prev {
+    left: 0;
+  }
+
+  &__next {
+    right: 0;
   }
 }
