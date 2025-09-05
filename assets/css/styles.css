@@ -593,7 +593,7 @@ address {
   display: flex;
   flex-direction: column;
 }
-@media (min-width: 1200px) {
+@media (min-width: 640px) {
   .projectsListing__items {
     display: flex;
     flex-wrap: wrap;
@@ -601,9 +601,18 @@ address {
     margin: 0 calc(-1 * var(--grid-gap) / 2);
   }
 }
+.projectsListing__item {
+  width: 100%;
+  margin-bottom: 48px;
+}
+@media (min-width: 640px) {
+  .projectsListing__item {
+    width: 50%;
+    padding: 0 calc(var(--grid-gap) / 2);
+  }
+}
 @media (min-width: 1200px) {
   .projectsListing__item {
-    padding: 0 calc(var(--grid-gap) / 2);
     margin-bottom: 96px;
   }
 }

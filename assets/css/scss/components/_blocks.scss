@@ -125,7 +125,7 @@
   flex-direction: column;
 
   &__items {
-    @include breakpoint( $laptop ) {
+    @include breakpoint( $tablet ) {
       display: flex;
       flex-wrap: wrap;
       align-items: stretch;
@@ -134,8 +134,13 @@
   }
 
   &__item {
-    @include breakpoint( $laptop ) {
+    width: 100%;
+    margin-bottom: 48px;
+    @include breakpoint( $tablet ) {
+      width: 50%;
       padding: 0 calc( var(--grid-gap)/2 );
+    }
+    @include breakpoint( $laptop ) {
       margin-bottom: 96px;
     }
 
