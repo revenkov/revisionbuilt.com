@@ -71,7 +71,17 @@ if ( !empty( $posts ) ) :
 <div class="section">
     <div class="container">
         <div class="featuredProjects">
-            <div class="featuredProjects__header"><?php echo $projects['content']; ?></div>
+            <div class="featuredProjects__header">
+                <div class="featuredProjects__headerLeft"><?php echo $projects['content']; ?></div>
+                <div class="featuredProjects__headerRight">
+                    <?php
+                    get_template_part('parts/link', false, [
+                        'title' => __('Explore our projects', 'selectrum'),
+                        'url' => selectrum_get_permalink( 2566 )
+                    ]);
+                    ?>
+                </div>
+            </div>
             <div class="featuredProjects__listing">
                 <div class="featuredProjects__items">
                     <?php foreach ( $posts as $post ) : setup_postdata($post); ?>
@@ -120,19 +130,7 @@ if ( !empty( $content_group_1 ) ) :
 <?php endif; ?>
 
 
-<?php
-$cta = get_field('call-to-action');
-if ( !empty( $cta ) ) :
-?>
-<div class="section">
-    <div class="container">
-        <div class="ctaBlock">
-            <?php echo $cta['content']; ?>
+<?php get_template_part('parts/cta'); ?>
 
-            <?php get_template_part('parts/button', false, $cta['button']); ?>
-        </div>
-    </div>
-</div>
-<?php endif; ?>
 
 <?php get_footer(); ?>

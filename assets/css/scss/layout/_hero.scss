@@ -6,9 +6,10 @@
 
   &__imageContainer {
     position: relative;
-    padding-bottom: 128.2%;
-    @include breakpoint( $xs ) {
-      padding-bottom: 35.4%;
+    height: 128.2vw;
+    @include breakpoint( $tablet ) {
+      height: 35.4vw;
+      min-height: 450px;
     }
   }
 
@@ -30,9 +31,9 @@
   }
 
   &__textContainer {
-    padding: 10vw 0;
+    padding: 40px 0;
     max-width: 880px;
-    @include breakpoint( $lg ) {
+    @include breakpoint( $laptop ) {
       padding: 72px 0;
     }
   }

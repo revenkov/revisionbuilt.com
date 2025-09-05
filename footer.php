@@ -75,7 +75,7 @@
                         </div>
                     </div>
                     <div class="siteFooter__copyright">
-                        &copy; <?php echo date('Y'); ?> Revision Built. <?php echo __('All Rights Reserved.', 'selectrum'); ?> <?php echo sprintf( __('Website by %s.', 'selectrum'), '<a href="https://www.selectrum.com/" target="_blank">SELECTRUM COMMUNICATIONS</a>'); ?> <a href="<?php echo get_privacy_policy_url(); ?>"><?php echo __('Privacy Policy', 'selectrum'); ?></a>
+                        &copy; <?php echo date('Y'); ?> Revision Built. <?php echo __('All Rights Reserved.', 'selectrum'); ?> <span class="siteFooter__divider"></span> <?php echo sprintf( __('Website by %s.', 'selectrum'), '<a href="https://www.selectrum.com/" target="_blank">SELECTRUM COMMUNICATIONS</a>'); ?> <a href="<?php echo get_privacy_policy_url(); ?>"><?php echo __('Privacy Policy', 'selectrum'); ?></a>
                     </div>
                 </div>
             </div>

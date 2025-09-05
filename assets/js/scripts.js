@@ -40,10 +40,14 @@ jQuery(document).ready( function($) {
     /**
      * Process Scroll event
      */
-    var previousScrollTop = 0;
+    let previousScrollTop = 0;
     $window.on("load scroll", function () {
-        var scrollTop = $document.scrollTop();
+        let scrollTop = $document.scrollTop();
         $body.toggleClass('scrolled', Boolean(scrollTop));
+        $siteHeader.toggleClass('hidden', scrollTop > 0 && scrollTop > previousScrollTop);
+        $siteHeader.toggleClass('condensed', scrollTop > 300);
+        $siteNav.toggleClass('hidden', scrollTop > 0 && scrollTop > previousScrollTop);
+        $siteNav.toggleClass('condensed', scrollTop > 300);
         previousScrollTop = scrollTop;
     });
 
@@ -84,16 +88,6 @@ jQuery(document).ready( function($) {
             processHash(window.location.hash);
         }
     });
-
-
-    /**
-     * Header
-     */
-    function headerHandler() {
-        const scrollTop = $document.scrollTop();
-        $('.siteHeader').toggleClass('hidden', scrollTop > 0 && scrollTop > previousScrollTop);
-    }
-    $window.on("load scroll", headerHandler);
 
 
 
@@ -142,15 +136,17 @@ jQuery(document).ready( function($) {
     $menu.init();
 
 
-    const lenis = new Lenis({
+    /*const lenis = new Lenis({
         autoRaf: true,
-    });
+    });*/
 
 
     /**
      * AOS
      */
-    //AOS.init();
+    AOS.init({
+        duration: 600,
+    });
 
 
     $('.mosaic').each(function (index, listingElement) {
@@ -334,7 +330,7 @@ jQuery(document).ready( function($) {
 
 
     $('.featuredProjects').each(function(index, element) {
-        if ( windowWidth >= 640 ) {
+        if ( windowWidth >= 1200 ) {
             return;
         }
         const $element = $(element);
@@ -357,12 +353,6 @@ jQuery(document).ready( function($) {
                 },
                 640: {
                     items: 2
-                },
-                960: {
-                    items: 3
-                },
-                1260: {
-                    items: 4
                 }
             }
         });

@@ -16,7 +16,7 @@ $mobile = get_field('mobile', selectrum_get_hero_image_post_id());
     <?php endif; ?>
     <div class="hero__overlay">
         <div class="container hero__container">
-            <div class="hero__textContainer"><?php echo selectrum_get_hero_text(); ?></div>
+            <div class="hero__textContainer" data-aos="fade-up"><?php echo selectrum_get_hero_text(); ?></div>
         </div>
     </div>
 </div>

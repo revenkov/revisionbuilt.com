@@ -41,32 +41,36 @@ use Selectrum\WalkerNavMenu;
 
 
     <nav id="siteNav" class="siteNav">
-        <a class="siteNav__logoContainer" href="<?php echo home_url(); ?>" title="<?php bloginfo( 'blog_name' ); ?>">
-            <img class="siteNav__logoImage" src="<?php echo selectrum_get_image_url('logo.png'); ?>" alt="<?php bloginfo( 'blog_name' ); ?>">
-        </a>
-        <button class="siteNav__closeButton" id="btnMenuClose" title="Close"><span></span><span></span></button>
-        <div class="container siteNav__container">
-            <div class="siteNav__inner">
-                <div class="siteNav__inner2">
-                    <div class="siteNav__menu">
-                        <?php
-                        wp_nav_menu( array(
-                            'theme_location' => 'primary_menu',
-                            'menu_class'     => 'primaryMenu',
-                            'menu_id'        => 'primaryMenu',
-                            'container'      => false,
-                            'walker'         => new WalkerNavMenu()
-                        ) );
-                        ?>
-                    </div>
-                    <div class="siteNav__buttons">
-                        <?php
-                        get_template_part('parts/button', false, [
-                                'title' => __('Book a consultation', 'selectrum'),
-                                'target' => '_blank',
-                                'url' => '#'
-                        ]);
-                        ?>
+        <div class="siteNav__header">
+            <a class="siteNav__logoContainer" href="<?php echo home_url(); ?>" title="<?php bloginfo( 'blog_name' ); ?>">
+                <img class="siteNav__logoImage" src="<?php echo selectrum_get_image_url('logo.png'); ?>" alt="<?php bloginfo( 'blog_name' ); ?>">
+            </a>
+            <button class="siteNav__closeButton" id="btnMenuClose" title="Close"><span></span><span></span></button>
+        </div>
+        <div class="siteNav__content">
+            <div class="container siteNav__container">
+                <div class="siteNav__inner">
+                    <div class="siteNav__inner2">
+                        <div class="siteNav__menu">
+                            <?php
+                            wp_nav_menu( array(
+                                    'theme_location' => 'primary_menu',
+                                    'menu_class'     => 'primaryMenu',
+                                    'menu_id'        => 'primaryMenu',
+                                    'container'      => false,
+                                    'walker'         => new WalkerNavMenu()
+                            ) );
+                            ?>
+                        </div>
+                        <div class="siteNav__buttons">
+                            <?php
+                            get_template_part('parts/button', false, [
+                                    'title' => __('Book a consultation', 'selectrum'),
+                                    'target' => '_blank',
+                                    'url' => '#'
+                            ]);
+                            ?>
+                        </div>
                     </div>
                 </div>
             </div>

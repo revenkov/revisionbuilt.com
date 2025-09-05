@@ -4,7 +4,7 @@ $xxxs: 360px;
 $xxs: 480px;
 $xs: 640px;
 $sm: 960px;
-$md: 1120px;
+$md: 1200px;
 $lg: 1360px;
 $xl: 1600px;
 $xxl: 1920px;
@@ -20,14 +20,15 @@ $desktop: $xl;
   --section-margin: 65px;
   --grid-columns: 4;
   --grid-gap: 16px;
-  @include breakpoint( $xs ) {
+  @include breakpoint( $tablet ) {
     --container-padding-x: 3.75vw;
+    --header-height: 140px;
   }
-  @include breakpoint( $lg ) {
+  @include breakpoint( $laptop ) {
     //--container-padding-x: 40px;
   }
-  @include breakpoint( $desktop ) {
-    --header-height: 170px;
+  @include breakpoint( $laptop ) {
+    --header-height: 0;
     --section-margin: 96px;
     --grid-columns: 12;
     --grid-gap: 24px;

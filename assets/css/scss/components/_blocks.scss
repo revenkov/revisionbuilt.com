@@ -1,6 +1,7 @@
 .mediaBlock {
   position: relative;
   overflow: hidden;
+  --padding-bottom: 71.5%;
 
   &:before {
     content: '';
@@ -21,7 +22,7 @@
 
 
 .introBlock {
-  @include breakpoint( $desktop ) {
+  @include breakpoint( $laptop ) {
     width: 50%;
   }
 }
@@ -36,7 +37,7 @@
 
   &__header {
     margin-bottom: 24px;
-    @include breakpoint( $desktop ) {
+    @include breakpoint( $laptop ) {
       margin-bottom: 40px;
     }
   }
@@ -45,12 +46,12 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
-    gap: 24px;
+    gap: 24px 0;
   }
 
   &__imageCol {
     width: 100%;
-    @include breakpoint( $desktop ) {
+    @include breakpoint( $laptop ) {
       width: calc( ( 100% - var(--grid-gap)*3 ) / 2 );
     }
   }
@@ -61,14 +62,14 @@
 
   &__textCol {
     width: 100%;
-    @include breakpoint( $desktop ) {
+    @include breakpoint( $laptop ) {
       width: calc( ( 100% - var(--grid-gap)*3 ) / 2 );
       display: flex;
       align-items: center;
     }
 
     p:not(.text-lg) {
-      @include breakpoint( $desktop ) {
+      @include breakpoint( $laptop ) {
         max-width: 550px;
       }
     }
@@ -80,8 +81,26 @@
 
   &__header {
     margin-bottom: 32px;
-    @include breakpoint( $desktop ) {
+    @include breakpoint( $laptop ) {
       margin-bottom: 48px;
+      display: flex;
+      align-items: flex-end;
+      gap: var(--grid-gap);
+    }
+
+    &Left,
+    &Right {
+      @include breakpoint( $laptop ) {
+        flex: 1;
+      }
+    }
+
+    &Right {
+      display: none;
+      @include breakpoint( $laptop ) {
+        display: block;
+        text-align: right;
+      }
     }
   }
 
@@ -89,7 +108,7 @@
     overflow: hidden;
     margin-right: calc( -1 * var(--container-padding-x) );
     padding-right: 43px;
-    @include breakpoint( $desktop ) {
+    @include breakpoint( $laptop ) {
       margin: 0;
       padding: 0;
     }
@@ -100,7 +119,7 @@
   }
 
   &__items {
-    @include breakpoint( $desktop ) {
+    @include breakpoint( $laptop ) {
       display: flex;
       flex-wrap: wrap;
       align-items: stretch;
@@ -112,7 +131,7 @@
   &__item {
     opacity: .4;
     transition: opacity .3s;
-    @include breakpoint( $desktop ) {
+    @include breakpoint( $laptop ) {
       opacity: 1;
       padding: 0 calc( var(--grid-gap)/2 );
     }
@@ -123,14 +142,14 @@
 
     &:nth-child(4n + 1),
     &:nth-child(4n + 4) {
-      @include breakpoint( $desktop ) {
+      @include breakpoint( $laptop ) {
         width: calc( 100% / var(--grid-columns) * 8 );
       }
 
       .projectTeaser {
 
         &__mediaBlock {
-          @include breakpoint( $desktop ) {
+          @include breakpoint( $laptop ) {
             --padding-bottom: calc( (100% - var(--grid-gap)) * .535 );
           }
         }
@@ -139,14 +158,14 @@
 
     &:nth-child(4n + 2),
     &:nth-child(4n + 3) {
-      @include breakpoint( $desktop ) {
+      @include breakpoint( $laptop ) {
         width: calc( 100% / var(--grid-columns) * 4 );
       }
 
       .projectTeaser {
 
         &__mediaBlock {
-          @include breakpoint( $desktop ) {
+          @include breakpoint( $laptop ) {
             --padding-bottom: 107%;
           }
         }
@@ -163,22 +182,24 @@
   gap: 20px;
   border-bottom: 1px solid var(--color-neutral-300);
   height: 100%;
-  @include breakpoint( $desktop ) {
+  transition: border-color .3s;
+  @include breakpoint( $laptop ) {
     gap: 16px;
-  }
-
-  &__imageContainer {
-
   }
 
   &__mediaBlock {
     --padding-bottom: 97.6%;
+
+    img {
+      scale: 1.05;
+      transition: scale .3s;
+    }
   }
 
   &__textContainer {
     flex: 1;
     padding: 0 40px 40px 0;
-    @include breakpoint( $desktop ) {
+    @include breakpoint( $laptop ) {
       padding-bottom: 1rem;
       display: flex;
       flex-direction: column;
@@ -188,7 +209,7 @@
 
   &__categories {
     display: none;
-    @include breakpoint( $desktop ) {
+    @include breakpoint( $laptop ) {
       display: flex;
       flex-wrap: wrap;
       gap: .5rem;
@@ -210,7 +231,7 @@
 
   &__title {
     margin-bottom: .75rem;
-    @include breakpoint( $desktop ) {
+    @include breakpoint( $laptop ) {
       @include letter-spacing(-10);
       margin-bottom: .375rem;
     }
@@ -231,7 +252,8 @@
     height: 1.25rem;
     background-color: var(--color-primary-500);
     rotate: -45deg;
-    @include breakpoint( $desktop ) {
+    transition: rotate .3s;
+    @include breakpoint( $laptop ) {
       bottom: 16px;
     }
   }
@@ -242,6 +264,28 @@
     inset: 0;
     z-index: 10;
   }
+
+  &:hover {
+    @media (hover: hover) {
+      border-color: var(--color-primary-500);
+
+      &:after {
+        rotate: 0deg;
+      }
+    }
+  }
+
+  &:hover & {
+    @media (hover: hover) {
+
+      &__mediaBlock {
+
+        img {
+          scale: 1;
+        }
+      }
+    }
+  }
 }
 
 
@@ -250,20 +294,155 @@
   flex-wrap: wrap;
   align-items: flex-end;
   justify-content: space-between;
-  gap: 1.5rem;
+  gap: 1.5rem 0;
+  @include breakpoint( $tablet ) {
+    gap: 3rem 0;
+  }
+  @include breakpoint( $laptop ) {
+    margin: 194px calc( -1 * var(--grid-gap)/2 );
+    flex-wrap: nowrap;
+    align-items: flex-start;
+  }
+
+  &__header {
+    @include breakpoint( $laptop ) {
+      width: calc( 100% / var(--grid-columns) * 4 );
+      padding: 0 calc( var(--grid-gap) / 2 );
+    }
+  }
 
   &__content {
     width: 100%;
+    @include breakpoint( $laptop ) {
+      width: auto;
+      flex: 1;
+      padding: 0 calc( var(--grid-gap) / 2 );
+    }
   }
 
   &__logo {
-    max-width: 125px;
+    width: 125px;
+    @include breakpoint( $tablet ) {
+      width: 280px;
+    }
+    @include breakpoint( $laptop ) {
+      order: 9999;
+      padding: 0 calc( var(--grid-gap) / 2 );
+      margin-left: 44px;
+    }
   }
 }
 
 
 .ctaBlock {
-  padding: 64px var(--container-padding-x);
+  padding: 64px calc( var(--container-padding-x) * 2 );
   background: var(--color-neutral-100);
   text-align: center;
+  @include breakpoint( $laptop ) {
+    padding: 128px var(--container-padding-x);
+  }
+
+  &__inner {
+    //max-width: 1180px;
+    max-width: 1320px;
+    margin: 0 auto;
+  }
+}
+
+
+.imageTextBlock {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 24px 0;
+
+  &__imageCol {
+    width: 100%;
+    @include breakpoint( $laptop ) {
+      width: calc( (100% - var(--grid-gap)) / 2);
+    }
+  }
+
+  &__textCol {
+    width: 100%;
+    @include breakpoint( $laptop ) {
+      display: flex;
+      align-items: center;
+      width: calc( (100% - var(--grid-gap)) / 2 - var(--grid-gap)/2 );
+    }
+    @include breakpoint( $desktop ) {
+      padding: 0 var(--container-padding-x);
+    }
+  }
+
+  &--textLeft {
+    @include breakpoint( $laptop ) {
+      flex-direction: row-reverse;
+    }
+  }
+
+  &--textLeft & {
+
+    &__textCol {
+      @include breakpoint( $desktop ) {
+        padding: 0 calc( var(--container-padding-x) * 2 ) 0 0;
+      }
+    }
+  }
+}
+
+
+.testimonialsBlock {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 24px 0;
+
+  &__textCol {
+    width: 100%;
+    @include breakpoint( $laptop ) {
+      width: calc( (100% - var(--grid-gap)) / 2 - var(--container-padding-x)*2 );
+    }
+  }
+
+  &__testimonialsCol {
+    width: 100%;
+    @include breakpoint( $laptop ) {
+      width: calc( (100% - var(--grid-gap)) / 2 );
+    }
+  }
+}
+
+
+.testimonial {
+  position: relative;
+
+  &:before {
+    content: '';
+    display: block;
+    width: 18px;
+    height: 17px;
+    mask: var(--icon-quotes) no-repeat center;
+    mask-size: contain;
+    background: var(--color-primary-500);
+    margin-bottom: 24px;
+    @include breakpoint( $laptop ) {
+      position: absolute;
+      top: 5px;
+      left: calc( var(--grid-gap) * -1 );
+      translate: -100% 0;
+    }
+  }
+
+  &__text {
+    margin-bottom: 32px;
+  }
+
+  &:not(:last-child) {
+    @include breakpoint( $laptop ) {
+      padding-bottom: 40px;
+      border-bottom: 1px solid var(--color-neutral-300);
+      margin-bottom: 40px;
+    }
+  }
 }

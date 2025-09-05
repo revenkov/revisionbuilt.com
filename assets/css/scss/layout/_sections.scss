@@ -1,3 +1,9 @@
 .section {
   margin: var(--section-margin) 0;
+
+  &:last-child {
+    @include breakpoint( $laptop ) {
+      margin-bottom: 67px;
+    }
+  }
 }

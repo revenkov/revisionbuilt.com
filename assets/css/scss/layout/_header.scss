@@ -6,6 +6,10 @@
   background: transparent;
   z-index: 3000;
   transition: translate .3s;
+  @include breakpoint( $laptop ) {
+    position: fixed;
+    z-index: 5000;
+  }
 
   &__inner {
     position: relative;
@@ -18,12 +22,27 @@
     left: 0;
     top: 50%;
     transform: translateY(-50%);
+    @include breakpoint( $laptop ) {
+      top: 32px;
+      transform: none;
+      transition: top .3s, left .3s;
+    }
   }
 
   &__logoImage {
     width: 118px;
-    @include breakpoint( $desktop ) {
+    @include breakpoint( $tablet ) {
       width: 180px;
+    }
+    @include breakpoint( $laptop ) {
+      width: 118px;
+    }
+    @include breakpoint( $lg ) {
+      width: 180px;
+      height: 106px;
+      object-fit: cover;
+      object-position: center top;
+      transition: height .3s, width .3s;
     }
   }
 
@@ -32,8 +51,28 @@
   }
 
   &.hidden {
-    @include breakpoint( $lg ) {
-      translate: 0 -100%;
+    @include breakpoint( $laptop ) {
+      translate: 0 -150px;
+    }
+  }
+
+  &.condensed & {
+
+    &__logoContainer {
+      @include breakpoint( $laptop ) {
+        top: 16px;
+        left: -30px;
+      }
+      @include breakpoint( $lg ) {
+        left: -40px;
+      }
+    }
+
+    &__logoImage {
+      @include breakpoint( $lg ) {
+        height: 58px;
+        width: 142px;
+      }
     }
   }
 }
@@ -53,7 +92,7 @@
   align-items: center;
   min-height: 48px;
   transition: visibility .3s, opacity .3s;
-  @include breakpoint( $lg ) {
+  @include breakpoint( $laptop ) {
     display: none;
   }
 
