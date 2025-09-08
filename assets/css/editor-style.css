@@ -269,7 +269,10 @@ p, ul, ol, blockquote, hr {
   margin: 1.5rem 0;
 }
 p + h1, p + .h1, p + h2, p + .h2, p + h3, p + .h3, p + h4, p + .h4, p + h5, p + .h5, p + h6, p + .h6, ul + h1, ul + .h1, ul + h2, ul + .h2, ul + h3, ul + .h3, ul + h4, ul + .h4, ul + h5, ul + .h5, ul + h6, ul + .h6, ol + h1, ol + .h1, ol + h2, ol + .h2, ol + h3, ol + .h3, ol + h4, ol + .h4, ol + h5, ol + .h5, ol + h6, ol + .h6, blockquote + h1, blockquote + .h1, blockquote + h2, blockquote + .h2, blockquote + h3, blockquote + .h3, blockquote + h4, blockquote + .h4, blockquote + h5, blockquote + .h5, blockquote + h6, blockquote + .h6, hr + h1, hr + .h1, hr + h2, hr + .h2, hr + h3, hr + .h3, hr + h4, hr + .h4, hr + h5, hr + .h5, hr + h6, hr + .h6 {
-  margin-top: 3rem;
+  /*margin-top: 2rem;
+  @include breakpoint( $tablet ) {
+    margin-top: 3rem;
+  }*/
 }
 p:first-child, ul:first-child, ol:first-child, blockquote:first-child, hr:first-child {
   margin-top: 0;
@@ -388,6 +391,14 @@ address {
   display: block;
   border-bottom: 2px solid #D7D7D7;
   transition: border-color 0.3s;
+}
+.link__text:before {
+  content: attr(data-text-mobile);
+}
+@media (min-width: 640px) {
+  .link__text:before {
+    content: attr(data-text-default);
+  }
 }
 .link:after {
   content: "";

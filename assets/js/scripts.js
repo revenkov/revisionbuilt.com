@@ -45,9 +45,9 @@ jQuery(document).ready( function($) {
         let scrollTop = $document.scrollTop();
         $body.toggleClass('scrolled', Boolean(scrollTop));
         $siteHeader.toggleClass('hidden', scrollTop > 0 && scrollTop > previousScrollTop);
-        $siteHeader.toggleClass('condensed', scrollTop > 300);
+        $siteHeader.toggleClass('condensed', scrollTop > 60);
         $siteNav.toggleClass('hidden', scrollTop > 0 && scrollTop > previousScrollTop);
-        $siteNav.toggleClass('condensed', scrollTop > 300);
+        $siteNav.toggleClass('condensed', scrollTop > 60);
         previousScrollTop = scrollTop;
     });
 
@@ -147,6 +147,20 @@ jQuery(document).ready( function($) {
     AOS.init({
         duration: 600,
     });
+
+
+    function stepsHandler() {
+        $('.step__number').each(function (index, element) {
+            if ( $(element).offset().top < $document.scrollTop() + windowHeight/2 ) {
+                $('.step__number').removeClass('active');
+                $(element).addClass('active');
+            } else {
+                $(element).removeClass('active');
+            }
+        })
+    }
+    stepsHandler();
+    $window.on('scroll resize', stepsHandler);
 
 
     /*
@@ -333,7 +347,7 @@ jQuery(document).ready( function($) {
 
     let tinySlider = null;
     function featuredProjectsHandler() {
-        if ( windowWidth < 1200 ) {
+        if ( windowWidth < 1200 && $('.projectsListing__items').length ) {
             if ( tinySlider === null || tinySlider.destroy === null ) {
                 tinySlider = tns({
                     container: '.featuredProjects .projectsListing__items',
@@ -368,38 +382,21 @@ jQuery(document).ready( function($) {
 
 
 
-    $('.logosCarousel').each(function(index, element) {
+    $('.projectGallery').each(function(index, element) {
         const $element = $(element);
         const $container = $element.find('[class*="__slides"]');
         tns({
             container: $container[0],
+            items: 1,
             loop: true,
-            gutter: 16,
-            autoplay: false,
+            gutter: 0,
+            autoplay: true,
+            autoplayTimeout: 4000,
             autoplayButtonOutput: false,
             autoplayHoverPause: true,
             nav: true,
             navPosition: 'bottom',
-            controls: true,
-            controlsPosition: 'top',
-            controlsText: ['', ''],
-            responsive: {
-                0: {
-                    items: 2
-                },
-                640: {
-                    items: 3
-                },
-                960: {
-                    items: 4
-                },
-                1260: {
-                    items: 5
-                },
-                1400: {
-                    items: 6
-                }
-            }
+            controls: false,
         });
     });
 

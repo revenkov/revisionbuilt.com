@@ -19,6 +19,7 @@ class Theme
         add_action('after_setup_theme', [$this, 'setup_theme']);
         add_action('wp_head', [$this, 'add_fonts']);
         add_action('wp_enqueue_scripts', [$this, 'enqueue_scripts'], 100);
+        add_filter( 'nav_menu_css_class', [$this, 'filter_menu_classes'], 10, 2 );
         add_action('init', [$this, 'config_acf']);
         add_action('init', [$this, 'config_emails']);
         add_action('init', [$this, 'add_svg_support']);
@@ -297,6 +298,16 @@ class Theme
 	public function auth_cookie_expiration(): int {
 		return 1209600; // 2 weeks in seconds
 	}
+
+    public function filter_menu_classes( array $classes, $item ) {
+        if ( is_singular( 'project' ) ) {
+            if ( $item->object_id == selectrum_filter_id( 2566 ) ) {
+                $classes[] = 'current-menu-ancestor';
+            }
+        }
+
+        return $classes;
+    }
 
 	public function ajax_newsletter_form(): void {
 		try {

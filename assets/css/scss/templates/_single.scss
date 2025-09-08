@@ -1,0 +1,145 @@
+.single {
+
+  .siteHeader {
+
+    &__logo {
+      background-image: url("../images/logo-color.png");
+    }
+  }
+
+  .siteNav .primaryMenu > li > .menu-item-link-wrapper {
+
+    > a {
+      @include breakpoint( $laptop ) {
+        color: var(--color-neutral-900);
+      }
+    }
+
+    > .menu-item-button {
+      @include breakpoint( $laptop ) {
+        color: var(--color-neutral-900);
+      }
+    }
+  }
+
+  .siteContent {
+    margin-top: 103px;
+    @include breakpoint( $laptop ) {
+      margin-top: 133px;
+    }
+  }
+}
+
+
+.projectDetails {
+
+  &__categories {
+    margin-bottom: 24px;
+    @include breakpoint( $tablet ) {
+      margin-bottom: 12px;
+    }
+  }
+
+  &__cols {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 32px 0;
+    @include breakpoint( $laptop ) {
+      justify-content: space-between;
+    }
+  }
+
+  &__col1 {
+    width: 100%;
+    padding-top: 5px;
+    @include breakpoint( $laptop ) {
+      width: calc( (100% - var(--grid-gap)) / 2 );
+      max-width: 726px;
+    }
+  }
+
+  &__col2 {
+    width: 100%;
+    @include breakpoint( $laptop ) {
+      width: calc( (100% - var(--grid-gap)) / 2 );
+    }
+  }
+
+  &__items {
+    margin-top: 32px;
+    border-top: 1px solid var(--color-neutral-200);
+    font-size: 1.125rem;
+    line-height: 1.6875rem;
+    @include breakpoint( $tablet ) {
+      margin: 40px 0;
+    }
+  }
+
+  &__item {
+    padding: 12px 0;
+    border-bottom: 1px solid var(--color-neutral-200);
+    @include breakpoint( $tablet ) {
+      display: flex;
+      gap: 16px;
+      padding: 8px 0;
+    }
+
+    &Title {
+      @include breakpoint( $tablet ) {
+        width: calc( (100% - var(--grid-gap)*3) / 2 );
+      }
+    }
+
+    &Description {
+      @include breakpoint( $tablet ) {
+        width: calc( (100% + var(--grid-gap)) / 2 );
+      }
+    }
+  }
+
+  &__description {
+    margin-top: 32px;
+  }
+}
+
+
+.projectGallery {
+
+  &__mediaBlock {
+    --padding-bottom: 68.4%;
+
+    img {
+      scale: 1.05;
+      transition: scale .3s;
+    }
+
+    &:hover {
+      @media (hover: hover) {
+        img {
+          scale: 1;
+        }
+      }
+    }
+  }
+
+  .tns-nav {
+    display: flex;
+    gap: 12px;
+    margin-top: 16px;
+    @include breakpoint( $tablet ) {
+      margin-top: 24px;
+    }
+
+    button {
+      flex: 1;
+      height: 4px;
+      background: var(--color-neutral-200);
+      border-radius: 0;
+      transition: background .3s;
+
+      &.tns-nav-active {
+        background: var(--color-primary-500);
+      }
+    }
+  }
+}

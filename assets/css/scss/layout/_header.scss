@@ -16,33 +16,33 @@
     height: var(--header-height);
   }
 
-  &__logoContainer {
+  &__logo {
     display: block;
     position: absolute;
     left: 0;
     top: 50%;
     transform: translateY(-50%);
-    @include breakpoint( $laptop ) {
-      top: 32px;
-      transform: none;
-      transition: top .3s, left .3s;
-    }
-  }
-
-  &__logoImage {
+    background: url('../images/logo.png') no-repeat center top;
+    background-size: 116px auto;
     width: 118px;
+    height: 70px;
+    transition: width .3s, height .3s, top .3s, left .3s;
     @include breakpoint( $tablet ) {
       width: 180px;
+      height: 106px;
+      background-size: 178px;
     }
     @include breakpoint( $laptop ) {
+      background-size: 116px auto;
       width: 118px;
+      height: 70px;
+      top: 32px;
+      transform: none;
     }
     @include breakpoint( $lg ) {
+      background-size: 178px auto;
       width: 180px;
       height: 106px;
-      object-fit: cover;
-      object-position: center top;
-      transition: height .3s, width .3s;
     }
   }
 
@@ -51,27 +51,23 @@
   }
 
   &.hidden {
-    @include breakpoint( $laptop ) {
-      translate: 0 -150px;
-    }
+    translate: 0 -150px;
   }
 
   &.condensed & {
 
-    &__logoContainer {
+    &__logo {
       @include breakpoint( $laptop ) {
-        top: 16px;
-        left: -30px;
+        top: 20px;
+        left: -10px;
+        width: 60px;
+        height: 50px;
       }
       @include breakpoint( $lg ) {
         left: -40px;
-      }
-    }
-
-    &__logoImage {
-      @include breakpoint( $lg ) {
-        height: 58px;
         width: 142px;
+        height: 58px;
+        background-size: 142px;
       }
     }
   }

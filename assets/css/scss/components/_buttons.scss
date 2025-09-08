@@ -14,6 +14,13 @@
     display: block;
     border-bottom: 2px solid #D7D7D7;
     transition: border-color .3s;
+
+    &:before {
+      content: attr(data-text-mobile);
+      @include breakpoint( $tablet ) {
+        content: attr(data-text-default);
+      }
+    }
   }
 
   &:after {

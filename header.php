@@ -27,9 +27,7 @@ use Selectrum\WalkerNavMenu;
     <header id="siteHeader" class="siteHeader">
         <div class="container siteHeader__container">
             <div class="siteHeader__inner">
-                <a class="siteHeader__logoContainer" href="<?php echo home_url(); ?>" title="<?php bloginfo( 'blog_name' ); ?>">
-                    <img class="siteHeader__logoImage" src="<?php echo selectrum_get_image_url('logo.png'); ?>" alt="<?php bloginfo( 'blog_name' ); ?>">
-                </a>
+                <a class="siteHeader__logo" href="<?php echo home_url(); ?>" title="<?php bloginfo( 'blog_name' ); ?>"></a>
             </div>
         </div>
     </header>

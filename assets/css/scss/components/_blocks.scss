@@ -1,22 +1,28 @@
 .mediaBlock {
   position: relative;
   overflow: hidden;
-  --padding-bottom: 71.5%;
 
-  &:before {
-    content: '';
-    display: block;
-    padding-bottom: var(--padding-bottom);
-  }
+  &--formatted,
+  &--video,
+  &--iframe {
+    --padding-bottom: 71.5%;
 
-  img,
-  video {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
+    &:before {
+      content: '';
+      display: block;
+      padding-bottom: var(--padding-bottom);
+    }
+
+    img,
+    video,
+    iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
   }
 }
 
@@ -235,23 +241,9 @@
   &__categories {
     display: none;
     @include breakpoint( $laptop ) {
-      display: flex;
-      flex-wrap: wrap;
-      gap: .5rem;
       padding-bottom: .75rem;
       margin-bottom: auto;
     }
-  }
-
-  &__category {
-    display: flex;
-    align-items: center;
-    background: var(--color-neutral-100);
-    padding: 0 .75rem;
-    font-weight: 500;
-    font-size: .75rem;
-    line-height: 1rem;
-    min-height: 1.5rem;
   }
 
   &__title {
@@ -314,6 +306,28 @@
 }
 
 
+.categories {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .5rem;
+  @include breakpoint( $laptop ) {
+    padding-bottom: .75rem;
+    margin-bottom: auto;
+  }
+
+  &__category {
+    display: flex;
+    align-items: center;
+    background: var(--color-neutral-100);
+    padding: 0 .75rem;
+    font-weight: 500;
+    font-size: .75rem;
+    line-height: 1rem;
+    min-height: 1.5rem;
+  }
+}
+
+
 .certificationBlock {
   display: flex;
   flex-wrap: wrap;
@@ -324,9 +338,9 @@
     gap: 3rem 0;
   }
   @include breakpoint( $laptop ) {
-    margin: 194px calc( -1 * var(--grid-gap)/2 );
+    margin: 128px calc( -1 * var(--grid-gap)/2 );
     flex-wrap: nowrap;
-    align-items: flex-start;
+    align-items: stretch;
   }
 
   &__header {
@@ -342,6 +356,9 @@
       width: auto;
       flex: 1;
       padding: 0 calc( var(--grid-gap) / 2 );
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
     }
   }
 
@@ -380,6 +397,10 @@
   flex-wrap: wrap;
   justify-content: space-between;
   gap: 24px 0;
+  flex-direction: column-reverse;
+  @include breakpoint( $laptop ) {
+    flex-direction: row;
+  }
 
   &__imageCol {
     width: 100%;
@@ -417,6 +438,78 @@
 }
 
 
+.steps {
+  display: flex;
+  flex-direction: column;
+  gap: 50px 0;
+  @include breakpoint( $sm ) {
+    gap: min(9.6vw, 200px) 0;
+  }
+}
+
+
+.step {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 24px 0;
+
+  &__indexCol {
+    display: none;
+    @include breakpoint( $sm ) {
+      display: block;
+      width: calc( (100% - var(--grid-gap)) / 2 - var(--container-padding-x)*2 );
+    }
+  }
+
+  &__textCol {
+    position: relative;
+    width: 100%;
+    @include breakpoint( $sm ) {
+      width: calc( (100% - var(--grid-gap)) / 2 );
+    }
+
+    &:before {
+      content: '';
+      display: block;
+      width: 48px;
+      height: 48px;
+      mask: var(--icon) no-repeat center;
+      mask-size: auto 42px;
+      background: var(--color-primary-500);
+      margin-bottom: 24px;
+      @include breakpoint( $sm ) {
+        position: absolute;
+        top: 5px;
+        left: calc( var(--grid-gap) * -1.5 );
+        translate: -100% 0;
+        width: 56px;
+        height: 56px;
+        mask-size: auto 48px;
+      }
+    }
+
+    p:not(.text-lg) {
+      @include breakpoint( $sm ) {
+        max-width: 560px;
+      }
+    }
+  }
+
+  &__number {
+    font-weight: 300;
+    font-size: 16rem;
+    line-height: .8;
+    color: var(--color-neutral-200);
+    transition: color .6s;
+
+    &.active {
+      color: var(--color-primary-500);
+    }
+  }
+}
+
+
 .testimonialsBlock {
   display: flex;
   flex-wrap: wrap;
@@ -425,14 +518,15 @@
 
   &__textCol {
     width: 100%;
-    @include breakpoint( $laptop ) {
+    @include breakpoint( $sm ) {
       width: calc( (100% - var(--grid-gap)) / 2 - var(--container-padding-x)*2 );
     }
   }
 
   &__testimonialsCol {
+    position: relative;
     width: 100%;
-    @include breakpoint( $laptop ) {
+    @include breakpoint( $sm ) {
       width: calc( (100% - var(--grid-gap)) / 2 );
     }
   }
@@ -451,7 +545,7 @@
     mask-size: contain;
     background: var(--color-primary-500);
     margin-bottom: 24px;
-    @include breakpoint( $laptop ) {
+    @include breakpoint( $sm ) {
       position: absolute;
       top: 5px;
       left: calc( var(--grid-gap) * -1 );
@@ -460,11 +554,14 @@
   }
 
   &__text {
-    margin-bottom: 32px;
+    margin-bottom: 24px;
+    @include breakpoint( $sm ) {
+      margin-bottom: 32px;
+    }
   }
 
   &:not(:last-child) {
-    @include breakpoint( $laptop ) {
+    @include breakpoint( $sm ) {
       padding-bottom: 40px;
       border-bottom: 1px solid var(--color-neutral-300);
       margin-bottom: 40px;
@@ -476,6 +573,12 @@
 .postNav {
   position: relative;
   text-align: center;
+  padding-top: 70px;
+  margin-top: -20px;
+  @include breakpoint( $tablet ) {
+    padding: 0;
+    margin: 0;
+  }
 
   &__prev,
   &__next {
@@ -490,4 +593,55 @@
   &__next {
     right: 0;
   }
+}
+
+
+
+.imageImageBlock {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 16px 0;
+
+  &__col1 {
+    width: 100%;
+    @include breakpoint( $sm ) {
+      width: calc( (100% - var(--grid-gap)) / 2 );
+    }
+  }
+
+  &__col2 {
+    width: 100%;
+    @include breakpoint( $sm ) {
+      width: calc( (100% - var(--grid-gap)) / 2 );
+    }
+  }
+
+  &__mediaBlock {
+    --padding-bottom: 68.4%;
+  }
+
+  &__label {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    background: var(--color-primary-500);
+    color: #ffffff;
+    text-transform: uppercase;
+    padding: 4px 16px;
+    min-height: 32px;
+    display: flex;
+    align-items: center;
+    font-weight: 700;
+    font-size: .875rem;
+    @include breakpoint( $laptop ) {
+      padding: 8px 32px;
+      min-height: 40px;
+    }
+  }
+}
+
+
+.fullWidthMediaBlock {
+  --padding-bottom: 53%;
 }

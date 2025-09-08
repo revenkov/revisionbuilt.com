@@ -426,7 +426,7 @@
   bottom: 0;
   opacity: 0;
   background: #000000;
-  z-index: 1000;
+  z-index: 4000;
   transition: visibility .3s, opacity .3s;
   @include breakpoint( $sm ) {
     display: none;
