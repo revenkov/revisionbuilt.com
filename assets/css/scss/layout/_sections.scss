@@ -3,7 +3,7 @@
 
   &:last-child {
     @include breakpoint( $laptop ) {
-      margin-bottom: 67px;
+      //margin-bottom: 67px;
     }
   }
 }

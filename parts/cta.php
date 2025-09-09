@@ -1,9 +1,9 @@
 <?php
 $cta = get_field('call-to-action');
-if ( empty( $cta ) ) {
+if ( empty( $cta['content'] ) ) {
     $cta = get_field('default_content_group', 'options');
 }
-if ( empty( $cta ) ) {
+if ( empty( $cta['content'] ) ) {
     return;
 }
 ?>

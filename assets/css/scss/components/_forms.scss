@@ -11,13 +11,16 @@ select {
   width: 100%;
   border-radius: 0;
   margin: 0;
+  height: 56px;
+  padding: 0 16px;
   border: 1px solid currentColor;
+  appearance: none;
 }
 
 select {
   padding-top: 0;
   padding-bottom: 0;
-  background: var(--icon-angle) no-repeat right 12px center;
+  background: var(--icon-angle) no-repeat right 20px center;
 }
 
 textarea {
@@ -55,6 +58,7 @@ textarea {
   &__title {
     display: block;
     font-weight: 700;
+    margin-bottom: 10px;
   }
 
   &__body {

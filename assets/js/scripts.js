@@ -554,110 +554,206 @@ jQuery(document).ready( function($) {
     */
 
 
-    //Listing pagination
-    $window.on('load', function () {
-        $('.projectsListing').each(function (index, listingElement) {
-            var $listing = $(listingElement);
-            var $filterDropdown = $listing.find('select');
-            var $filterButtons = $listing.find('.blogCategories__buttons');
-            var $itemsContainer = $listing.find('.projectsListing__items');
-            var itemSelector = '.projectsListing__item';
-            var $items = $itemsContainer.find(itemSelector);
-            var $pagination = $listing.find('.projectsListing__pagination');
-            var step = windowWidth < 640 ? 3 : 6;
-            var visibleItemsNum = step;
-            var filterValue = '*';
-            var matchCounter = 0;
-            var $isotope = $itemsContainer.isotope({
-                itemSelector: itemSelector,
-                layoutMode: 'fitRows',
-                filter: isotopeFilter
+    //Projects listing
+    $('.projectsListing').each(function (index, listingElement) {
+        var $listing = $(listingElement);
+        var $filterDropdown = $listing.find('select');
+        var $filterButtons = $listing.find('.blogCategories__buttons');
+        var $itemsContainer = $listing.find('.projectsListing__items');
+        var itemSelector = '.projectsListing__item';
+        var $items = $itemsContainer.find(itemSelector);
+        var $pagination = $listing.find('.projectsListing__pagination');
+        var step = windowWidth < 640 ? 3 : 6;
+        var visibleItemsNum = step;
+        var filterValue = '*';
+        var matchCounter = 0;
+        var $isotope = $itemsContainer.isotope({
+            itemSelector: itemSelector,
+            layoutMode: 'fitRows',
+            filter: isotopeFilter
+        });
+
+        function resetItemsHeight() {
+            $items.css('height', '');
+            $items.each(function (index, element) {
+                var $item = $(element);
+                $item.css('height', $item.outerHeight());
             });
+        }
 
-            function resetItemsHeight() {
-                $items.css('height', '');
-                $items.each(function (index, element) {
-                    var $item = $(element);
-                    $item.css('height', $item.outerHeight());
-                });
-            }
+        function showMoreItems() {
+            visibleItemsNum = visibleItemsNum + step;
+            matchCounter = 0;
+            $itemsContainer.isotope();
+            $pagination.toggle( matchCounter > visibleItemsNum );
+        }
 
-            function showMoreItems() {
-                visibleItemsNum = visibleItemsNum + step;
-                matchCounter = 0;
-                $itemsContainer.isotope();
-                $pagination.toggle( matchCounter > visibleItemsNum );
-            }
+        function applyIsotopeFilter() {
+            resetItemsHeight();
+            matchCounter = 0;
+            $itemsContainer.isotope();
+            $pagination.toggle( matchCounter > visibleItemsNum );
+            $filterButtons.find('button').removeClass('active');
+            $filterButtons.find('[data-filter="'+filterValue+'"]').addClass('active');
+            $filterDropdown.find('option[value="'+filterValue+'"]').prop('selected', 'selected');
+        }
 
-            function applyIsotopeFilter() {
-                resetItemsHeight();
-                matchCounter = 0;
-                $itemsContainer.isotope();
-                $pagination.toggle( matchCounter > visibleItemsNum );
-                $filterButtons.find('button').removeClass('active');
-                $filterButtons.find('[data-filter="'+filterValue+'"]').addClass('active');
-                $filterDropdown.find('option[value="'+filterValue+'"]').prop('selected', 'selected');
-            }
-
-            function alignItemsHeight() {
-                let itemsInRow = [];
-                let rowHeight = 0;
-                const filteredElements = $itemsContainer.isotope('getFilteredItemElements');
-                resetItemsHeight();
-                filteredElements.forEach(function (element, index) {
-                    var $item = $(element);
-                    if ( index > 0 ) {
-                        if ( $item.offset().top === $(filteredElements[index-1]).offset().top ) {
-                            itemsInRow.push( $item );
-                            rowHeight = $item.outerHeight() > rowHeight ? $item.outerHeight() : rowHeight;
-                        }
-                        else {
-                            itemsInRow.forEach(function ($item) {
-                                $item.css('height', rowHeight);
-                            });
-                            itemsInRow = [ $item ];
-                            rowHeight = $item.outerHeight();
-                        }
-                    } else {
+        function alignItemsHeight() {
+            let itemsInRow = [];
+            let rowHeight = 0;
+            const filteredElements = $itemsContainer.isotope('getFilteredItemElements');
+            resetItemsHeight();
+            filteredElements.forEach(function (element, index) {
+                var $item = $(element);
+                if ( index > 0 ) {
+                    if ( $item.offset().top === $(filteredElements[index-1]).offset().top ) {
                         itemsInRow.push( $item );
-                        rowHeight = $item.outerHeight();
+                        rowHeight = $item.outerHeight() > rowHeight ? $item.outerHeight() : rowHeight;
                     }
-                    if ( index === filteredElements.length - 1 ) {
+                    else {
                         itemsInRow.forEach(function ($item) {
                             $item.css('height', rowHeight);
                         });
+                        itemsInRow = [ $item ];
+                        rowHeight = $item.outerHeight();
                     }
-                });
-            }
-
-            function isotopeFilter() {
-                var match = filterValue === '*' || $(this).hasClass( filterValue.replace('.', '') );
-                if ( match ) {
-                    matchCounter++;
+                } else {
+                    itemsInRow.push( $item );
+                    rowHeight = $item.outerHeight();
                 }
-                return match && matchCounter <= visibleItemsNum;
-            }
-
-            function hashHandler() {
-                if ( location.hash && $items.filter('.' + location.hash.substring(1)).length ) {
-                    filterValue = '.' + location.hash.substring(1);
-                    applyIsotopeFilter();
+                if ( index === filteredElements.length - 1 ) {
+                    itemsInRow.forEach(function ($item) {
+                        $item.css('height', rowHeight);
+                    });
                 }
-            }
+            });
+        }
 
-            alignItemsHeight();
-            hashHandler();
-            $isotope.on( 'layoutComplete', alignItemsHeight);
-            $filterButtons.on( 'click', 'button', function(e) {
-                filterValue = $(this).attr('data-filter');
+        function isotopeFilter() {
+            var match = filterValue === '*' || $(this).hasClass( filterValue.replace('.', '') );
+            if ( match ) {
+                matchCounter++;
+            }
+            return match && matchCounter <= visibleItemsNum;
+        }
+
+        function hashHandler() {
+            if ( location.hash && $items.filter('.' + location.hash.substring(1)).length ) {
+                filterValue = '.' + location.hash.substring(1);
                 applyIsotopeFilter();
-            });
-            $filterDropdown.on('change', function () {
-                filterValue = $(this).val();
-                applyIsotopeFilter();
-            });
-            $pagination.on('click', '.link', showMoreItems);
+            }
+        }
+
+        alignItemsHeight();
+        hashHandler();
+        $isotope.on( 'layoutComplete', alignItemsHeight);
+        $filterButtons.on( 'click', 'button', function(e) {
+            filterValue = $(this).attr('data-filter');
+            applyIsotopeFilter();
         });
+        $filterDropdown.on('change', function () {
+            filterValue = $(this).val();
+            applyIsotopeFilter();
+        });
+        $pagination.on('click', '.link', showMoreItems);
+    });
+
+
+    //Blog listing
+    $('.blogListing').each(function (index, listingElement) {
+        var $listing = $(listingElement);
+        var $filterDropdown = $listing.find('select');
+        var $itemsContainer = $listing.find('.blogListing__items');
+        var itemSelector = '.blogListing__item';
+        var $items = $itemsContainer.find(itemSelector);
+        var $pagination = $listing.find('.blogListing__pagination');
+        var step = windowWidth < 640 ? 4 : ( windowWidth < 1600 ? 6 : 8 );
+        var visibleItemsNum = step;
+        var filterValue = '*';
+        var matchCounter = 0;
+        var $isotope = $itemsContainer.isotope({
+            itemSelector: itemSelector,
+            layoutMode: 'fitRows',
+            filter: isotopeFilter
+        });
+
+        function resetItemsHeight() {
+            $items.css('height', '');
+            $items.each(function (index, element) {
+                var $item = $(element);
+                $item.css('height', $item.outerHeight());
+            });
+        }
+
+        function showMoreItems() {
+            visibleItemsNum = visibleItemsNum + step;
+            matchCounter = 0;
+            $itemsContainer.isotope();
+            $pagination.toggle( matchCounter > visibleItemsNum );
+        }
+
+        function applyIsotopeFilter() {
+            resetItemsHeight();
+            matchCounter = 0;
+            $itemsContainer.isotope();
+            $pagination.toggle( matchCounter > visibleItemsNum );
+            $filterDropdown.find('option[value="'+filterValue+'"]').prop('selected', 'selected');
+        }
+
+        function alignItemsHeight() {
+            let itemsInRow = [];
+            let rowHeight = 0;
+            const filteredElements = $itemsContainer.isotope('getFilteredItemElements');
+            resetItemsHeight();
+            filteredElements.forEach(function (element, index) {
+                var $item = $(element);
+                if ( index > 0 ) {
+                    if ( $item.offset().top === $(filteredElements[index-1]).offset().top ) {
+                        itemsInRow.push( $item );
+                        rowHeight = $item.outerHeight() > rowHeight ? $item.outerHeight() : rowHeight;
+                    }
+                    else {
+                        itemsInRow.forEach(function ($item) {
+                            $item.css('height', rowHeight);
+                        });
+                        itemsInRow = [ $item ];
+                        rowHeight = $item.outerHeight();
+                    }
+                } else {
+                    itemsInRow.push( $item );
+                    rowHeight = $item.outerHeight();
+                }
+                if ( index === filteredElements.length - 1 ) {
+                    itemsInRow.forEach(function ($item) {
+                        $item.css('height', rowHeight);
+                    });
+                }
+            });
+        }
+
+        function isotopeFilter() {
+            var match = filterValue === '*' || $(this).hasClass( filterValue );
+            if ( match ) {
+                matchCounter++;
+            }
+            return match && matchCounter <= visibleItemsNum;
+        }
+
+        function hashHandler() {
+            if ( location.hash && $items.filter(location.hash.substring(1)).length ) {
+                filterValue = location.hash.substring(1);
+                applyIsotopeFilter();
+            }
+        }
+
+        alignItemsHeight();
+        hashHandler();
+        $isotope.on( 'layoutComplete', alignItemsHeight);
+        $filterDropdown.on('change', function () {
+            filterValue = $(this).val();
+            applyIsotopeFilter();
+        });
+        $pagination.on('click', '.link', showMoreItems);
     });
 
 
