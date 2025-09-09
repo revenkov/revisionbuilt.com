@@ -950,6 +950,10 @@
 
     &Title {
       margin-bottom: .75rem;
+
+      span {
+        color: var(--color-primary-500);
+      }
     }
 
     &Description {

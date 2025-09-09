@@ -57,46 +57,7 @@ if ( !empty( $services ) ) :
 <?php endif; ?>
 
 
-<?php
-$projects = get_field('projects');
-$posts = $projects['projects'];
-if ( empty( $posts ) ) :
-    $posts = get_posts([
-        'post_type' => 'project',
-        'posts_per_page' => 4,
-    ]);
-endif;
-if ( !empty( $posts ) ) :
-?>
-<div class="section">
-    <div class="container">
-        <div class="featuredProjects">
-            <div class="featuredProjects__header">
-                <div class="featuredProjects__headerLeft"><?php echo $projects['content']; ?></div>
-                <div class="featuredProjects__headerRight">
-                    <?php
-                    get_template_part('parts/link', false, [
-                        'title' => __('Explore our projects', 'selectrum'),
-                        'url' => selectrum_get_permalink( 2566 )
-                    ]);
-                    ?>
-                </div>
-            </div>
-            <div class="featuredProjects__listing">
-                <div class="projectsListing">
-                    <div class="projectsListing__items">
-                        <?php foreach ( $posts as $post ) : setup_postdata($post); ?>
-                            <div class="projectsListing__item">
-                                <?php get_template_part('parts/project-teaser'); ?>
-                            </div>
-                        <?php endforeach; wp_reset_postdata(); ?>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-<?php endif; ?>
+<?php get_template_part('parts/featured-projects'); ?>
 
 
 <?php

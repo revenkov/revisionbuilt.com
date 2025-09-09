@@ -1387,6 +1387,9 @@ address {
 .coreStrengths__itemTitle {
   margin-bottom: 0.75rem;
 }
+.coreStrengths__itemTitle span {
+  color: var(--color-primary-500);
+}
 .coreStrengths__itemDescription {
   font-size: 1.125rem;
   line-height: 1.6875rem;
