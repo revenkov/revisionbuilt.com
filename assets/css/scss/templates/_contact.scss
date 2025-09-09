@@ -1,0 +1,66 @@
+.contactBlock {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 48px 0;
+  margin: 0 calc( var(--grid-gap) / -2 );
+
+  p {
+    max-width: 725px;
+  }
+
+  &__col1 {
+    width: 100%;
+    padding: 0 calc( var(--grid-gap) / 2 );
+    @include breakpoint( $laptop ) {
+      width: calc( 100% / var(--grid-columns) * 5 );
+    }
+  }
+
+  &__col2 {
+    width: 100%;
+    padding: 0 calc( var(--grid-gap) / 2 );
+    @include breakpoint( $laptop ) {
+      width: 50%;
+    }
+  }
+
+  &__socials {
+    display: flex;
+    gap: 1.25rem;
+    align-items: center;
+    margin-top: 2rem;
+    color: var(--color-primary-500);
+  }
+}
+
+
+.contacts {
+  margin-top: 32px;
+  @include breakpoint( $desktop ) {
+    margin-top: 64px;
+  }
+
+  a {
+    text-decoration: none;
+    @media (hover: hover) {
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+
+  &__cols {
+    @include breakpoint( $tablet ) {
+      display: flex;
+      margin-top: calc( -.5rem );
+    }
+  }
+
+  &__col {
+    @include breakpoint( $tablet ) {
+      width: 50%;
+      max-width: 325px;
+    }
+  }
+}

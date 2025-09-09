@@ -23,13 +23,13 @@ $desktop: $xl;
   @include breakpoint( $tablet ) {
     --container-padding-x: 32px;
     --header-height: 140px;
+    --grid-gap: 24px;
   }
   @include breakpoint( $laptop ) {
     --container-padding-x: 48px;
     --header-height: 0;
     --section-margin: 96px;
     --grid-columns: 12;
-    --grid-gap: 24px;
   }
   @include breakpoint( $desktop ) {
     --container-padding-x: 72px;

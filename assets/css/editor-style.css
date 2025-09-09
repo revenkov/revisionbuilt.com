@@ -47,6 +47,7 @@
   :root {
     --container-padding-x: 32px;
     --header-height: 140px;
+    --grid-gap: 24px;
   }
 }
 @media (min-width: 1200px) {
@@ -55,7 +56,6 @@
     --header-height: 0;
     --section-margin: 96px;
     --grid-columns: 12;
-    --grid-gap: 24px;
   }
 }
 @media (min-width: 1600px) {

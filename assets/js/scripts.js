@@ -163,6 +163,12 @@ jQuery(document).ready( function($) {
     $window.on('scroll resize', stepsHandler);
 
 
+    $document.on('wpcf7mailsent',function (e) {
+        $('.contactFormBlock__formContainer').hide();
+        $('.contactFormBlock__response').show();
+    });
+
+
     /*
     $('.projectsListing').each(function (index, listingElement) {
         var $listing = $(listingElement);
