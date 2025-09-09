@@ -166,7 +166,7 @@
           line-height: 2rem;
           @include letter-spacing(-10);
           color: var(--color-neutral-500);
-          transition: color .3s;
+          transition: color .3s, border-bottom-color .3s;
           @include breakpoint( $laptop ) {
             font-size: 1.125rem;
             line-height: 1.5rem;
@@ -372,6 +372,20 @@
             >.sub-menu {
               visibility: visible;
               opacity: 1;
+            }
+          }
+        }
+      }
+
+      &:hover {
+        @media (hover: hover) {
+          >.menu-item-link-wrapper {
+
+            > a {
+              color: #ffffff;
+              @include breakpoint($laptop) {
+                border-bottom-color: var(--color-primary-500);
+              }
             }
           }
         }
