@@ -18,12 +18,12 @@ $image_1 = get_field('image_1');
 <div class="section">
     <div class="container">
         <div class="imageTextBlock imageTextBlock--textLeft">
-            <div class="imageTextBlock__imageCol">
+            <div class="imageTextBlock__imageCol" data-aos="fade-up">
                 <div class="mediaBlock">
                     <?php echo wp_get_attachment_image( $image_1['ID'], 'full' ); ?>
                 </div>
             </div>
-            <div class="imageTextBlock__textCol">
+            <div class="imageTextBlock__textCol" data-aos="fade-up">
                 <div class="imageTextBlock__textContainer">
                     <?php echo $content_group_1['content']; ?>
 
@@ -39,7 +39,7 @@ $image_1 = get_field('image_1');
 $content = get_field('content');
 $core_strengths = get_field('core_strengths');
 ?>
-<div class="section">
+<div class="section" data-aos="fade-up">
     <div class="container">
         <?php echo $content; ?>
 

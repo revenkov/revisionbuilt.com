@@ -17,7 +17,7 @@ if ( !empty( $intro_content ) ) :
 ?>
 <div class="section">
     <div class="container">
-        <div class="introBlock"><?php echo $intro_content; ?></div>
+        <div class="introBlock" data-aos="fade-up"><?php echo $intro_content; ?></div>
     </div>
 </div>
 <?php endif; ?>
@@ -30,7 +30,7 @@ if ( !empty( $sections ) ) :
 ?>
 <div class="section">
     <div class="container">
-        <div class="imageTextBlock <?php echo $key % 2 !== 0 ? 'imageTextBlock--textLeft' : false; ?>">
+        <div class="imageTextBlock <?php echo $key % 2 !== 0 ? 'imageTextBlock--textLeft' : false; ?>" data-aos="fade-up">
             <div class="imageTextBlock__imageCol">
                 <div class="mediaBlock">
                     <?php echo wp_get_attachment_image( $section['image']['ID'], 'full' ); ?>
@@ -60,12 +60,12 @@ if ( !empty( $testimonials ) ) :
 <div class="section">
     <div class="container">
         <div class="testimonialsBlock">
-            <div class="testimonialsBlock__textCol">
+            <div class="testimonialsBlock__textCol" data-aos="fade-up">
                 <?php echo $content_group_1['content']; ?>
 
                 <?php get_template_part('parts/link', false, $section['button']); ?>
             </div>
-            <div class="testimonialsBlock__testimonialsCol">
+            <div class="testimonialsBlock__testimonialsCol" data-aos="fade-up">
                 <?php foreach ( $testimonials as $testimonial ) : ?>
                     <div class="testimonial">
                         <div class="testimonial__text">

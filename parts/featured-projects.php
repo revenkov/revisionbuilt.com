@@ -14,7 +14,7 @@ endif;
 <div class="section">
     <div class="container">
         <div class="featuredProjects">
-            <div class="featuredProjects__header">
+            <div class="featuredProjects__header" data-aos="fade-up">
                 <div class="featuredProjects__headerLeft"><?php echo $projects['content']; ?></div>
                 <div class="featuredProjects__headerRight">
                     <?php
@@ -29,7 +29,7 @@ endif;
                 <div class="projectsListing">
                     <div class="projectsListing__items">
                         <?php foreach ( $posts as $post ) : setup_postdata($post); ?>
-                            <div class="projectsListing__item">
+                            <div class="projectsListing__item" data-aos="fade-up">
                                 <?php get_template_part('parts/project-teaser'); ?>
                             </div>
                         <?php endforeach; wp_reset_postdata(); ?>

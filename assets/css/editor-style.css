@@ -173,10 +173,16 @@ h1, .h1 {
 }
 @media (min-width: 640px) {
   h1, .h1 {
-    font-size: 4.5rem;
-    line-height: 5rem;
+    font-size: 3rem;
+    line-height: 3.75rem;
     font-weight: 500;
     margin-bottom: 2rem;
+  }
+}
+@media (min-width: 1200px) {
+  h1, .h1 {
+    font-size: 4.5rem;
+    line-height: 5rem;
   }
 }
 
@@ -189,10 +195,16 @@ h2, .h2 {
 }
 @media (min-width: 640px) {
   h2, .h2 {
-    font-size: 3.5rem;
-    line-height: 4rem;
+    font-size: 2.5rem;
+    line-height: 3rem;
     font-weight: 500;
     margin-bottom: 2rem;
+  }
+}
+@media (min-width: 1200px) {
+  h2, .h2 {
+    font-size: 3.5rem;
+    line-height: 4rem;
   }
 }
 
@@ -254,7 +266,12 @@ a {
 }
 
 p:has(.link) {
-  margin: 2.75rem 0;
+  margin: 2rem 0;
+}
+@media (min-width: 640px) {
+  p:has(.link) {
+    margin: 2.75rem 0;
+  }
 }
 p:has(.button) {
   margin: 2rem 0;
@@ -383,14 +400,14 @@ address {
   margin: 0;
   text-decoration: none;
   font-size: 1.125rem;
-  line-height: 2rem;
+  line-height: 1.5rem;
   font-weight: 600;
   color: var(--color-neutral-900);
   transition: background-color 0.3s, border-color 0.3s, color 0.3s, outline-color 0.3s;
 }
 .link__text {
   display: block;
-  border-bottom: 2px solid #D7D7D7;
+  border-bottom: 1px solid #D7D7D7;
   transition: border-color 0.3s;
 }
 .link__text:before {

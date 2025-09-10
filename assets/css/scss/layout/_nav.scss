@@ -390,6 +390,12 @@
           }
         }
       }
+
+      &.menu-item-3064 {
+        @include breakpoint($laptop) {
+          display: none;
+        }
+      }
     }
   }
 

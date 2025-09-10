@@ -65,7 +65,7 @@ use Selectrum\WalkerNavMenu;
                             get_template_part('parts/button', false, [
                                     'title' => __('Book a consultation', 'selectrum'),
                                     'target' => '_blank',
-                                    'url' => '#'
+                                    'url' => selectrum_get_permalink( 2571 )
                             ]);
                             ?>
                         </div>

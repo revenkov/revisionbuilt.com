@@ -103,6 +103,7 @@ jQuery(document).ready( function($) {
             $menu.btn.on('click', $menu.toggle);
             $menu.btnClose.on('click', $menu.close);
             $menu.list.on('click', '.menu-item-has-children > .menu-item-link-wrapper', function (e) {
+                e.preventDefault();
                 if ( windowWidth < 1360 ) {
                     var $button = $(this);
                     var $item = $button.parents('.menu-item');
@@ -387,6 +388,26 @@ jQuery(document).ready( function($) {
     $window.on('resize', featuredProjectsHandler);
 
 
+    $('.heroSlider').each(function(index, element) {
+        const $element = $(element);
+        const $container = $element.find('[class*="__slides"]');
+        tns({
+            container: $container[0],
+            items: 1,
+            loop: true,
+            gutter: 0,
+            autoplay: true,
+            autoplayTimeout: 4000,
+            autoplayButtonOutput: false,
+            autoplayHoverPause: true,
+            nav: false,
+            controls: true,
+            controlsPosition: 'bottom',
+            controlsText: ['', ''],
+            controlsContainer: '.heroSlider__controls',
+        });
+    });
+
 
     $('.projectGallery').each(function(index, element) {
         const $element = $(element);
@@ -407,31 +428,74 @@ jQuery(document).ready( function($) {
     });
 
 
-    $('.testimonialsCarousel').each(function(index, element) {
-        const $element = $(element);
-        const $container = $element.find('[class*="__slides"]');
-        tns({
-            container: $container[0],
-            loop: true,
-            gutter: 20,
-            autoplay: false,
-            autoplayButtonOutput: false,
-            autoplayHoverPause: true,
-            nav: true,
-            navPosition: 'bottom',
-            controls: true,
-            controlsPosition: 'top',
-            controlsText: ['', ''],
-            responsive: {
-                0: {
-                    items: 1
-                },
-                960: {
-                    items: 2
-                }
+    let testimonialsSlider = null;
+    function testimonialsHandler() {
+        if ( windowWidth < 1200 && $('.testimonials').length ) {
+            if ( testimonialsSlider === null || testimonialsSlider.destroy === null ) {
+                testimonialsSlider = tns({
+                    container: '.testimonials__items',
+                    loop: false,
+                    gutter: 16,
+                    autoplay: false,
+                    autoplayButtonOutput: false,
+                    autoplayHoverPause: true,
+                    nav: false,
+                    controls: false,
+                    responsive: {
+                        0: {
+                            items: 1
+                        },
+                        960: {
+                            items: 2,
+                            gutter: 64
+                        }
+                    }
+                });
             }
-        });
-    });
+        } else {
+            if ( testimonialsSlider !== null && testimonialsSlider.destroy !== null ) {
+                testimonialsSlider.destroy();
+            }
+        }
+    }
+    testimonialsHandler();
+    $window.on('resize', testimonialsHandler);
+
+
+    let articlesSlider = null;
+    function articlesHandler() {
+        if ( windowWidth < 1200 && $('.latestArticlesListing').length ) {
+            if ( articlesSlider === null || articlesSlider.destroy === null ) {
+                articlesSlider = tns({
+                    container: '.latestArticlesListing__items',
+                    loop: false,
+                    gutter: 16,
+                    autoplay: false,
+                    autoplayButtonOutput: false,
+                    autoplayHoverPause: true,
+                    nav: false,
+                    controls: false,
+                    responsive: {
+                        0: {
+                            items: 1
+                        },
+                        640: {
+                            items: 2
+                        },
+                        960: {
+                            items: 3
+                        }
+                    }
+                });
+            }
+        } else {
+            if ( articlesSlider !== null && articlesSlider.destroy !== null ) {
+                articlesSlider.destroy();
+            }
+        }
+    }
+    articlesHandler();
+    $window.on('resize', articlesHandler);
 
 
     /*
@@ -561,7 +625,7 @@ jQuery(document).ready( function($) {
 
 
     //Projects listing
-    $('.projectsListing').each(function (index, listingElement) {
+    $('.projectsListing--isotope').each(function (index, listingElement) {
         var $listing = $(listingElement);
         var $filterDropdown = $listing.find('select');
         var $filterButtons = $listing.find('.blogCategories__buttons');
@@ -592,6 +656,7 @@ jQuery(document).ready( function($) {
             matchCounter = 0;
             $itemsContainer.isotope();
             $pagination.toggle( matchCounter > visibleItemsNum );
+            AOS.refresh();
         }
 
         function applyIsotopeFilter() {
@@ -602,6 +667,7 @@ jQuery(document).ready( function($) {
             $filterButtons.find('button').removeClass('active');
             $filterButtons.find('[data-filter="'+filterValue+'"]').addClass('active');
             $filterDropdown.find('option[value="'+filterValue+'"]').prop('selected', 'selected');
+            AOS.refresh();
         }
 
         function alignItemsHeight() {

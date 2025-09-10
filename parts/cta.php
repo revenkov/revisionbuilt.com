@@ -9,7 +9,7 @@ if ( empty( $cta['content'] ) ) {
 ?>
 <div class="section">
     <div class="container">
-        <div class="ctaBlock">
+        <div class="ctaBlock" data-aos="fade-up">
             <div class="ctaBlock__inner">
                 <?php echo $cta['content']; ?>
 

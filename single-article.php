@@ -58,18 +58,20 @@ if ( !empty( $posts ) ) :
                 <h2 class="latestArticles__title"><?php _e('Latest articles', 'selectrum'); ?></h2>
             </div>
             <div class="latestArticles__listing">
-                <div class="latestArticles__items">
-                    <?php
-                    foreach ( $posts as $post ) {
-                        setup_postdata($post);
-                        ?>
-                        <div class="latestArticles__item">
-                            <?php get_template_part('parts/blog-teaser'); ?>
-                        </div>
+                <div class="latestArticlesListing">
+                    <div class="latestArticles__items">
                         <?php
-                    }
-                    wp_reset_postdata();
-                    ?>
+                        foreach ( $posts as $post ) {
+                            setup_postdata($post);
+                            ?>
+                            <div class="latestArticles__item">
+                                <?php get_template_part('parts/blog-teaser'); ?>
+                            </div>
+                            <?php
+                        }
+                        wp_reset_postdata();
+                        ?>
+                    </div>
                 </div>
             </div>
             <nav class="latestArticles__nav">

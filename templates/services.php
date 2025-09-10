@@ -17,7 +17,7 @@ if ( !empty( $intro_content ) ) :
 ?>
 <div class="section">
     <div class="container">
-        <div class="introBlock"><?php echo $intro_content; ?></div>
+        <div class="introBlock" data-aos="fade-up"><?php echo $intro_content; ?></div>
     </div>
 </div>
 <?php endif; ?>
@@ -29,7 +29,7 @@ if ( !empty( $services ) ) :
 ?>
 <div class="section">
     <?php foreach ( $services as $key=>$service ) : ?>
-    <div class="serviceBlock">
+    <div class="serviceBlock" data-aos="fade-up">
         <div class="container">
             <div class="serviceBlock__inner">
                 <div class="serviceBlock__header">
@@ -66,7 +66,7 @@ if ( !empty( $content_group_1 ) ) :
 ?>
 <div class="section">
     <div class="container">
-        <div class="certificationBlock">
+        <div class="certificationBlock" data-aos="fade-up">
             <div class="certificationBlock__header"><?php echo $content_group_1['content_1']; ?></div>
             <div class="certificationBlock__logo"><?php echo wp_get_attachment_image( $content_group_1['logo']['ID'], 'full' ); ?></div>
             <div class="certificationBlock__content"><?php echo $content_group_1['content_2']; ?></div>

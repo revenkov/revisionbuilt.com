@@ -5,7 +5,7 @@ $images = get_field('images');
 ?>
 <div class="projectTeaser">
     <div class="projectTeaser__imageContainer">
-        <div class="mediaBlock projectTeaser__mediaBlock"><?php echo wp_get_attachment_image( $images[0]['ID'], 'full' ); ?></div>
+        <div class="mediaBlock mediaBlock--formatted projectTeaser__mediaBlock"><?php echo wp_get_attachment_image( $images[0]['ID'], 'full' ); ?></div>
     </div>
     <div class="projectTeaser__textContainer">
         <div class="categories projectTeaser__categories">

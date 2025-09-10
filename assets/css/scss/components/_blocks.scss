@@ -86,9 +86,9 @@
 .featuredProjects {
 
   &__header {
-    margin-bottom: 32px;
+    margin-bottom: 1.5rem;
     @include breakpoint( $laptop ) {
-      margin-bottom: 48px;
+      margin-bottom: 3rem;
       display: flex;
       align-items: flex-end;
       gap: var(--grid-gap);
@@ -106,6 +106,7 @@
       @include breakpoint( $laptop ) {
         display: block;
         text-align: right;
+        padding-bottom: 10px;
       }
     }
   }
@@ -123,7 +124,43 @@
       overflow: visible;
     }
   }
+
+  .projectsListing {
+
+    &__items {
+      @include breakpoint( $laptop ) {
+        gap: max(96px, 5vw) 0;
+      }
+    }
+
+    &__item {
+      margin-bottom: 0;
+    }
+  }
 }
+
+
+.categories {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .5rem;
+  @include breakpoint( $laptop ) {
+    padding-bottom: .75rem;
+    margin-bottom: auto;
+  }
+
+  &__category {
+    display: flex;
+    align-items: center;
+    background: var(--color-neutral-100);
+    padding: 0 .75rem;
+    font-weight: 500;
+    font-size: .75rem;
+    line-height: 1rem;
+    min-height: 1.5rem;
+  }
+}
+
 
 
 .projectsListing {
@@ -241,6 +278,7 @@
   &__categories {
     display: none;
     @include breakpoint( $laptop ) {
+      display: flex;
       padding-bottom: .75rem;
       margin-bottom: auto;
     }
@@ -302,28 +340,6 @@
         }
       }
     }
-  }
-}
-
-
-.categories {
-  display: flex;
-  flex-wrap: wrap;
-  gap: .5rem;
-  @include breakpoint( $laptop ) {
-    padding-bottom: .75rem;
-    margin-bottom: auto;
-  }
-
-  &__category {
-    display: flex;
-    align-items: center;
-    background: var(--color-neutral-100);
-    padding: 0 .75rem;
-    font-weight: 500;
-    font-size: .75rem;
-    line-height: 1rem;
-    min-height: 1.5rem;
   }
 }
 
@@ -514,11 +530,11 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
-  gap: 24px 0;
+  gap: 64px 0;
 
   &__textCol {
     width: 100%;
-    @include breakpoint( $sm ) {
+    @include breakpoint( $laptop ) {
       width: calc( (100% - var(--grid-gap)) / 2 - var(--container-padding-x)*2 );
     }
   }
@@ -526,9 +542,75 @@
   &__testimonialsCol {
     position: relative;
     width: 100%;
-    @include breakpoint( $sm ) {
+    @include breakpoint( $laptop ) {
       width: calc( (100% - var(--grid-gap)) / 2 );
     }
+  }
+}
+
+
+.testimonials {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  margin-right: calc( -1 * var(--container-padding-x) );
+  padding-right: 43px;
+  @include breakpoint( $sm ) {
+    padding-right: 96px;
+  }
+  @include breakpoint( $laptop ) {
+    margin: 0;
+    padding: 0;
+    overflow: visible;
+  }
+
+  .tns-ovh {
+    overflow: visible;
+  }
+
+  &__items {
+    @include breakpoint( $tablet ) {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: stretch;
+      margin: 0 calc(-1 * var(--grid-gap) / 2);
+    }
+
+    &.tns-slider {
+      margin: 0;
+    }
+  }
+
+  &__item {
+    width: 100%;
+    @include breakpoint( $tablet ) {
+      padding: 0 calc( var(--grid-gap)/2 );
+    }
+
+    &:not(:last-child) {
+      @include breakpoint( $laptop ) {
+        padding-bottom: 40px;
+        border-bottom: 1px solid var(--color-neutral-300);
+        margin-bottom: 40px;
+      }
+    }
+
+    &.tns-item {
+      padding: 0;
+      opacity: .4;
+      transition: opacity .3s;
+      @include breakpoint( $laptop ) {
+        opacity: 1;
+      }
+
+      &.tns-slide-active {
+        opacity: 1;
+      }
+    }
+  }
+
+  &__pagination {
+    text-align: center;
   }
 }
 
@@ -896,29 +978,52 @@
     }
   }
 
+  &__nav {
+    @include breakpoint( $laptop ) {
+      grid-area: nav;
+      padding: 0 calc( var(--grid-gap) / 2 );
+    }
+  }
+}
+
+
+.latestArticlesListing {
+  overflow: hidden;
+  padding: 0 43px 0 var(--container-padding-x);
+  margin: 0 calc( -1 * var(--container-padding-x) );
+  @include breakpoint( $laptop ) {
+    margin: 0;
+    padding: 0 calc( var(--grid-gap) / 2 );
+  }
+
+  .tns-ovh {
+    overflow: visible;
+  }
+
   &__items {
     @include breakpoint( $tablet ) {
       display: flex;
       flex-wrap: wrap;
-      margin: 0 calc( -1 * var(--grid-gap)/2 );
     }
   }
 
   &__item {
     margin-bottom: 2rem;
     @include breakpoint( $tablet ) {
-      width: 50%;
       padding: 0 calc(var(--grid-gap) / 2);
     }
     @include breakpoint( $sm ) {
-      width: 33.33%;
+      flex: 1;
     }
-  }
 
-  &__nav {
-    @include breakpoint( $laptop ) {
-      grid-area: nav;
-      padding: 0 calc( var(--grid-gap) / 2 );
+    &.tns-item {
+      padding: 0;
+      opacity: .4;
+      transition: opacity .3s;
+
+      &.tns-slide-active {
+        opacity: 1;
+      }
     }
   }
 }

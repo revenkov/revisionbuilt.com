@@ -1,0 +1,430 @@
+.heroSlider {
+  position: relative;
+
+  &__mediaBlock {
+    --padding-bottom: 880px;
+    @media (orientation: landscape) {
+      --padding-bottom: 48.44%;
+    }
+  }
+
+  &__overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.5);
+    color: #ffffff;
+    display: flex;
+    align-items: flex-end;
+    padding-bottom: 40px;
+    @include breakpoint( $laptop ) {
+      padding-bottom: 60px;
+    }
+
+    h1 {
+      color: #ffffff;
+    }
+
+    hr {
+      display: none;
+      opacity: .2;
+      @include breakpoint( $tablet ) {
+        display: block;
+      }
+    }
+  }
+
+  &__inner {
+    position: relative;
+  }
+
+  &__content {
+
+  }
+
+  &__subtitle {
+    opacity: .8;
+    @include breakpoint( $laptop ) {
+      padding-right: 150px;
+    }
+  }
+
+  &__controls {
+    display: flex;
+    gap: .5rem;
+    margin-top: 32px;
+    @include breakpoint( $laptop ) {
+      position: absolute;
+      margin: 0;
+      right: 0;
+      bottom: -12px;
+    }
+  }
+
+  &__button {
+    position: relative;
+    width: 40px;
+    height: 40px;
+    border-radius: 100%;
+    background: #ffffff;
+
+    &:after {
+      content: '';
+      width: 10px;
+      height: 7px;
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      translate: -50% -50%;
+      mask: var(--icon-arrow) no-repeat center;
+      mask-size: 100% auto;
+      background: #000000;
+      @include breakpoint( $laptop ) {
+        width: 16px;
+        height: 16px;
+      }
+    }
+
+    &--prev:after {
+      rotate: 180deg;
+    }
+  }
+}
+
+
+.cardsBlock {
+  margin: -24px 0 0;
+
+  &__items {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1px;
+  }
+
+  .card {
+    position: relative;
+    width: 100%;
+    @include breakpoint( $tablet ) {
+      width: 66%;
+    }
+    @include breakpoint( $laptop ) {
+      width: auto;
+      flex: 1;
+    }
+
+    &:nth-child(2n) {
+      @include breakpoint( $tablet ) {
+        margin-left: auto;
+      }
+    }
+
+    &__mediaBlock {
+      --padding-bottom: 63.25%;
+
+      img {
+        scale: 1.05;
+        transition: scale .3s;
+      }
+    }
+
+    &__overlay {
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      position: absolute;
+      inset: 0;
+      color: #ffffff;
+      padding: 1.25rem 1rem;
+      background: rgba(0, 0, 0, 0.6);
+      text-decoration: none;
+      @include breakpoint( $tablet ) {
+        padding: 2rem 2rem;
+      }
+
+      &:after {
+        content: '';
+        display: block;
+        position: absolute;
+        right: 16px;
+        top: 16px;
+        mask: var(--icon-arrow) no-repeat center;
+        width: 1.25rem;
+        height: 1.25rem;
+        background-color: currentcolor;
+        rotate: -45deg;
+        transition: rotate .3s;
+        @include breakpoint( $tablet ) {
+          right: 2rem;
+          top: 2rem;
+        }
+      }
+    }
+
+    &__title {
+      color: #ffffff;
+      margin: 0;
+      @include breakpoint( $tablet ) {
+        font-size: 2rem;
+        line-height: 2.5rem;
+      }
+    }
+
+    &:hover {
+      @media (hover:hover) {
+
+        .card__mediaBlock {
+
+          img {
+            scale: 1;
+          }
+        }
+      }
+    }
+  }
+}
+
+
+.valuePropositions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2.5rem 0;
+  @include breakpoint( $laptop ) {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    grid-template-rows: repeat(100, auto);
+    grid-template-areas:
+            "header listing"
+            "nav listing";
+    gap: 0;
+  }
+
+  &__header {
+    @include breakpoint( $laptop ) {
+      max-width: 725px;
+      grid-area: header;
+      margin-right: calc(100% / var(--grid-columns) * 2);
+    }
+  }
+
+  &__items {
+    @include breakpoint( $laptop ) {
+      padding: 0 calc( var(--grid-gap) / 2 );
+      grid-area: listing;
+      grid-row: span 100;
+    }
+  }
+
+  &__item {
+    position: relative;
+    padding-left: 40px;
+    @include breakpoint( $tablet) {
+      padding-left: 56px;
+    }
+    @include breakpoint( $laptop ) {
+      margin-left: -56px;
+    }
+
+    &:not(:last-child) {
+      padding-bottom: 1rem;
+      border-bottom: 1px solid var(--color-neutral-300);
+      margin-bottom: 1rem;
+      @include breakpoint( $tablet ) {
+        padding-bottom: 2rem;
+        margin-bottom: 2rem;
+      }
+    }
+
+    &:before {
+      content: '';
+      display: block;
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 24px;
+      height: 24px;
+      background: var(--color-primary-500);
+      mask: var(--icon) no-repeat center;
+      mask-size: auto 18px;
+      @include breakpoint( $tablet ) {
+        top: .25rem;
+        left: 0;
+        mask-size: auto 20px;
+      }
+    }
+
+    &Title {
+      margin-bottom: 1rem;
+      @include breakpoint( $tablet ) {
+        margin-bottom: .75rem;
+      }
+    }
+  }
+
+  &__nav {
+    @include breakpoint( $laptop ) {
+      grid-area: nav;
+      margin-top: 3rem;
+    }
+  }
+}
+
+
+.bgBlock {
+  position: relative;
+
+  &__mediaBlock {
+    position: absolute;
+    inset: 0;
+    --padding-bottom: 143.6%;
+    @include breakpoint( $laptop ) {
+      position: relative;
+      --padding-bottom: 48.4%;
+    }
+  }
+
+  &__overlay {
+    position: relative;
+    background: rgba(0, 0, 0, 0.7);
+    color: #ffffff;
+    display: flex;
+    align-items: flex-end;
+    padding: 64px 0;
+    @include breakpoint( $laptop ) {
+      position: absolute;
+      inset: 0;
+      padding: 80px 0;
+    }
+
+    h2 {
+      color: #ffffff;
+    }
+
+    p {
+      opacity: .8;
+
+      &:has(.link) {
+        opacity: 1;
+      }
+    }
+
+    .link {
+      color: #ffffff;
+
+      &__text {
+        border-bottom: 1px solid rgba(255,255,255,.3);
+      }
+    }
+  }
+
+  &__content {
+    @include breakpoint( $xl ) {
+      margin-left: auto;
+      width: calc( ( 100% / var(--grid-columns) * 6 ) );
+      padding: 0 calc( var(--grid-gap) / 2 );
+    }
+  }
+}
+
+
+.logos {
+  margin: -38px calc( var(--grid-gap)/-2 ) 0;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 32px 0;
+  @include breakpoint( $laptop ) {
+    gap: 32px 12px;
+    margin: -28px calc( var(--grid-gap)/-2 ) 150px;
+  }
+
+  &__item {
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0 calc( var(--grid-gap)/2 );
+    @include breakpoint( $tablet ) {
+      width: 170px
+    }
+
+    img {
+      filter: grayscale(100%);
+      transition: filter .3s;
+      max-height: 90px;
+      object-fit: contain;
+      object-position: center;
+
+      &:hover {
+        @media (hover: hover) {
+          filter: grayscale(0);
+        }
+      }
+    }
+  }
+}
+
+
+.homeLatestArticles {
+  @include breakpoint( $laptop ) {
+    display: grid;
+    grid-template-areas:
+            "header nav"
+            "listing listing";
+    grid-template-columns: 3fr 1fr;
+    grid-template-rows: repeat(100, auto);
+    align-items: flex-end;
+    margin: 0 calc( -1 * var(--grid-gap)/2 );
+  }
+
+  &__header {
+    margin-bottom: 24px;
+    @include breakpoint( $laptop ) {
+      grid-area: header;
+      padding: 0 calc( var(--grid-gap) / 2 );
+      margin-bottom: 0;
+    }
+  }
+
+  &__title {
+    @include breakpoint( $laptop ) {
+
+    }
+  }
+
+  &__listing {
+    @include breakpoint( $laptop ) {
+      grid-area: listing;
+      grid-row: span 100;
+      margin-top: 3rem;
+    }
+  }
+
+  &__items {
+    @include breakpoint( $tablet ) {
+      display: flex;
+      flex-wrap: wrap;
+      margin: 0 calc( -1 * var(--grid-gap)/2 );
+    }
+  }
+
+  &__item {
+    margin-bottom: 2rem;
+    @include breakpoint( $tablet ) {
+      width: 50%;
+      padding: 0 calc(var(--grid-gap) / 2);
+    }
+    @include breakpoint( $sm ) {
+      width: 33.33%;
+    }
+    @include breakpoint( $desktop ) {
+      width: 25%;
+    }
+  }
+
+  &__nav {
+    @include breakpoint( $laptop ) {
+      grid-area: nav;
+      padding: 0 calc( var(--grid-gap) / 2 ) 10px;
+      text-align: right;
+    }
+  }
+}
