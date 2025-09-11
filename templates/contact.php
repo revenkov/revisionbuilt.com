@@ -21,7 +21,7 @@ $form = get_field('form');
 <div class="section">
     <div class="container">
         <div class="contactBlock">
-            <div class="contactBlock__col1">
+            <div class="contactBlock__col1" data-aos="fade-up">
                 <?php echo $intro_content; ?>
 
                 <div class="contacts">
@@ -41,7 +41,7 @@ $form = get_field('form');
                     <?php get_template_part('parts/socials'); ?>
                 </div>
             </div>
-            <div class="contactBlock__col2">
+            <div class="contactBlock__col2" data-aos="fade-up">
                 <div class="contactFormBlock">
                     <div class="contactFormBlock__formContainer"><?php echo $form['content']; ?></div>
                     <div class="contactFormBlock__response" style="display: none;"><?php echo $form['response']; ?></div>

@@ -17,7 +17,7 @@ if ( !empty( $intro_content ) ) :
 ?>
 <div class="section">
     <div class="container">
-        <div class="introBlock"><?php echo $intro_content; ?></div>
+        <div class="introBlock" data-aos="fade-up"><?php echo $intro_content; ?></div>
     </div>
 </div>
 <?php endif; ?>
@@ -30,12 +30,12 @@ if ( !empty( $questions ) ) :
 <div class="section">
     <div class="container">
         <div class="faqBlock">
-            <div class="faqBlock__col1">
+            <div class="faqBlock__col1" data-aos="fade-up">
                 <?php echo $questions['content']; ?>
 
                 <?php empty($questions['button']) ?? get_template_part('parts/link', false, $questions['button']); ?>
             </div>
-            <div class="faqBlock__col2">
+            <div class="faqBlock__col2" data-aos="fade-up">
                 <div class="accordion">
                     <?php foreach ( $questions['questions'] as $item ) : ?>
                         <div class="accordion__item">

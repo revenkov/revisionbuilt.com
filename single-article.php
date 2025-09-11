@@ -14,12 +14,12 @@ $button = get_field('button');
 <div class="section">
     <div class="container">
         <div class="blogDetails">
-            <h1 class="blogDetails__title"><?php echo get_the_title(); ?></h1>
+            <h1 class="blogDetails__title" data-aos="fade-up"><?php echo get_the_title(); ?></h1>
             <div class="blogDetails__cols">
-                <div class="blogDetails__col1">
+                <div class="blogDetails__col1" data-aos="fade-up">
                     <div class="mediaBlock blogDetails__mediaBlock"><?php echo wp_get_attachment_image( $image['ID'], 'full' ); ?></div>
                 </div>
-                <div class="blogDetails__col2">
+                <div class="blogDetails__col2" data-aos="fade-up">
                     <div class="blogDetails__meta">
                         <?php if ( !empty( $date ) ) : ?>
                             <div class="blogDetails__date"><?php echo date_i18n('F j, Y', strtotime($date)); ?></div>
@@ -54,17 +54,17 @@ if ( !empty( $posts ) ) :
 <div class="section">
     <div class="container">
         <div class="latestArticles">
-            <div class="latestArticles__header">
+            <div class="latestArticles__header" data-aos="fade-up">
                 <h2 class="latestArticles__title"><?php _e('Latest articles', 'selectrum'); ?></h2>
             </div>
-            <div class="latestArticles__listing">
+            <div class="latestArticles__listing" data-aos="fade-up">
                 <div class="latestArticlesListing">
-                    <div class="latestArticles__items">
+                    <div class="latestArticlesListing__items">
                         <?php
                         foreach ( $posts as $post ) {
                             setup_postdata($post);
                             ?>
-                            <div class="latestArticles__item">
+                            <div class="latestArticlesListing__item">
                                 <?php get_template_part('parts/blog-teaser'); ?>
                             </div>
                             <?php
@@ -74,7 +74,7 @@ if ( !empty( $posts ) ) :
                     </div>
                 </div>
             </div>
-            <nav class="latestArticles__nav">
+            <nav class="latestArticles__nav" data-aos="fade-up">
                 <?php
                 get_template_part('parts/link', false, [
                     'title' => __('Back to blog', 'selectrum'),

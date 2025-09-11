@@ -1,6 +1,7 @@
 /**
  * jQuery Validation Custom methods
  */
+
 jQuery.validator && jQuery.validator.setDefaults({
     ignore: [],
     errorElement: "span",
@@ -170,101 +171,6 @@ jQuery(document).ready( function($) {
     });
 
 
-    /*
-    $('.projectsListing').each(function (index, listingElement) {
-        var $listing = $(listingElement);
-        var $pagination = $listing.find('.projectsListing__pagination');
-        var $itemsContainer = $listing.find('.projectsListing__items');
-        var itemSelector = '.projectsListing__item';
-        var step = windowWidth < 640 ? 3 : 6;
-        var visibleItemsNum = step;
-        var filterValue = '*';
-        var matchCounter = 0;
-        $itemsContainer.isotope({
-            itemSelector: itemSelector,
-            layoutMode: 'fitRows',
-            filter: isotopeFilter
-        });
-
-        function isotopeFilter() {
-            const match = filterValue === '*' || $(this).hasClass(filterValue.replace('.', ''));
-            if ( match ) {
-                matchCounter++;
-            }
-            return match && matchCounter <= visibleItemsNum;
-        }
-
-        function showMoreItems() {
-            visibleItemsNum = visibleItemsNum + step;
-            matchCounter = 0;
-            $itemsContainer.isotope();
-            $pagination.toggle( matchCounter > visibleItemsNum );
-        }
-
-        $pagination.toggle( matchCounter > visibleItemsNum );
-
-        $pagination.on( 'click', '.link', showMoreItems );
-    });
-    */
-
-
-    /**
-     * Parallax section
-     */
-    /*
-    function parallaxBackground() {
-        var scroll = $document.scrollTop();
-
-        $('.section--parallax').each(function (index, element) {
-            var $section = $(element);
-            var $sectionBg =  $section.find('.section__bg');
-            var sectionTop = $section.offset().top;
-            var sectionHeight = $section.outerHeight();
-            var bgRatio = $sectionBg.outerHeight() / sectionHeight - 1;
-
-            if ( sectionTop + sectionHeight > scroll && sectionTop < (scroll + windowHeight) ) {
-                var offset = (scroll + windowHeight - sectionTop) / (windowHeight + sectionHeight) * sectionHeight * bgRatio;
-                $sectionBg.css('translate', '0 -' + Math.round(offset) + 'px');
-            }
-        });
-    }
-    $window.on('scroll', parallaxBackground);
-    parallaxBackground();
-     */
-
-
-    /**
-     * Highlight nav items on scroll
-     */
-    /*
-    $window.on("load scroll", function() {
-        var scrollTop = $document.scrollTop();
-        var scrollMiddle = scrollTop + windowHeight/2;
-        $('.section').each(function (index, element) {
-            var sectionTop = $(element).offset().top;
-            var sectionBottom = sectionTop + windowHeight;
-            var id = $(element).attr('id');
-            if ( sectionTop < scrollMiddle && sectionBottom > scrollMiddle && $('.menu-item a[href*="#'+id+'"]').length ) {
-                $('.menu-item').removeClass('active');
-                $('.menu-item a[href*="#'+id+'"]').parents('.menu-item').addClass('active');
-            }
-        });
-    });
-    */
-
-
-    /**
-     * Scroll UP
-     */
-    /*
-    $body.on('click', '#btnUp', function (e) {
-        $('html, body').animate({
-            scrollTop: 0
-        }, 'normal');
-    });
-    */
-
-
     /**
      * jQuery UI Accordion
      */
@@ -283,73 +189,6 @@ jQuery(document).ready( function($) {
             }
         }
     });
-
-
-
-    /**
-     * Masonry align blocks
-     */
-    /*
-    var isMasonryActive = false;
-    var $masonryContainer = $('.masonry-container');
-    var masonryOptions = {
-        columnWidth: '.grid-sizer',
-        gutter: '.gutter-sizer',
-        itemSelector: '.masonry',
-        percentPosition: true
-    };
-    $masonryContainer.imagesLoaded().progress( function() {
-        $masonryContainer.masonry(masonryOptions);
-    });
-    */
-
-
-    /**
-     * Select2
-     */
-    /*
-    $('select').select2({
-        placeholder: 'Please Select One',
-        minimumResultsForSearch: Infinity,
-        width: '100%'
-    });
-    */
-
-
-    /**
-     * Welcome popup
-     */
-    /*
-    $document.on("load", function () {
-        if (localStorage.getItem('popup') !== 'shown') {
-            $.post({
-                url: selectrum.ajax_url,
-                data: {
-                    action: 'get_popup'
-                },
-                success: function ( response ) {
-                    if ( response.success ) {
-                        $.fancybox.open( response.data.content, {
-                            touch: false,
-                            autoFocus: false,
-                            btnTpl: {
-                                smallBtn:
-                                  '<button type="button" data-fancybox-close class="fancybox-button fancybox-close-small" title="{{CLOSE}}">' +
-                                  '<svg xmlns="http://www.w3.org/2000/svg" width="18.75" height="18.75" viewBox="0 0 18.75 18.75">' +
-                                  '<path d="M26.25,9.388,24.362,7.5l-7.487,7.487L9.388,7.5,7.5,9.388l7.487,7.487L7.5,24.362,9.388,26.25l7.487-7.487,7.487,7.487,1.888-1.888-7.487-7.487Z" transform="translate(-7.5 -7.5)" fill="#fff"/>' +
-                                  '</svg>' +
-                                  '</button>'
-                            }
-                        } )
-                        localStorage.setItem('popup', 'shown');
-                    } else {
-                        localStorage.removeItem('popup');
-                    }
-                }
-            });
-        }
-    });
-    */
 
 
     let tinySlider = null;
@@ -498,62 +337,6 @@ jQuery(document).ready( function($) {
     $window.on('resize', articlesHandler);
 
 
-    /*
-    //Simple listing
-    $('.postsListing').each(function (index, element) {
-        var $listing = $(element);
-        var $itemsContainer = $listing.find('.postsListing__items');
-        var itemSelector = '.postsListing__item:has(.insightTeaser)';
-        var $items = $itemsContainer.find(itemSelector);
-        var $pagination = $itemsContainer.find('.postsListing__item--pagination');
-        var itemsPerPage = windowWidth < 640 ? 6 : ( windowWidth < 1120 ? 7 : 10 );
-        var visibleItemsNum = itemsPerPage;
-
-        function filterItems() {
-            $items.each(function (index, element) {
-                var $item = $(element);
-                $item.toggle( index < visibleItemsNum );
-            });
-
-            $pagination.toggle( visibleItemsNum < $items.length );
-        }
-
-        $pagination.on('click', '.postsListing__buttonMore', function(e) {
-            visibleItemsNum = visibleItemsNum + itemsPerPage;
-            filterItems();
-        });
-
-        filterItems();
-    });
-     */
-
-
-    /*
-    $('.isotopeListing').each(function (index, element) {
-        var $this = $(element);
-        var $filterDropdown = $this.find('select');
-        var $filterList = $this.find('.isotopeListing__filterList');
-        var $grid = $('.isotopeListing__teasers');
-        var $isotope = $grid.isotope({
-            // options
-        });
-        $filterList.on( 'click', 'a', function(e) {
-            var filterValue = $(this).attr('data-filter');
-            $isotope.isotope({ filter: filterValue });
-            $(e.delegateTarget).find('a').removeClass('active');
-            $(this).addClass('active');
-            $filterDropdown.find('option[value="'+filterValue+'"]').prop('selected', 'selected');
-        });
-        $filterDropdown.on('change', function () {
-            var filterValue = $(this).val();
-            $isotope.isotope({ filter: filterValue });
-            $filterList.find('a').removeClass('active');
-            $filterList.find('[data-filter="'+filterValue+'"]').addClass('active');
-        });
-    });
-    */
-
-
 
     $('[data-fancybox]').fancybox({
         infobar: false,
@@ -585,43 +368,6 @@ jQuery(document).ready( function($) {
             },
         },
     });
-
-
-    /*
-    //Newsletter form
-    $('.newsletter').each(function (index, element) {
-        var $form = $(element);
-        $form.validate({
-            ignore: [],
-            errorElement: "span",
-            errorPlacement: function(error, element) {
-                error.appendTo( element.parent() );
-            },
-            submitHandler: function (form) {
-                var $fancybox;
-                $.ajax({
-                    method: 'POST',
-                    url: selectrum.ajax_url,
-                    data: $form.serialize(),
-                    beforeSend: function() {
-                        $fancybox = $.fancybox.open('<div class="fancybox-loading"></div>', {
-                            touch: false,
-                            autoFocus: false,
-                            smallBtn: false,
-                            toolbar: false,
-                            modal: true
-                        });
-                    },
-                    success: function(response) {
-                        $form.validate().resetForm();
-                        form.reset();
-                        $fancybox.setContent( $fancybox.current, $.fancybox.defaults.btnTpl.smallBtn + response.data.content );
-                    }
-                });
-            }
-        });
-    });
-    */
 
 
     //Projects listing
@@ -762,6 +508,7 @@ jQuery(document).ready( function($) {
             matchCounter = 0;
             $itemsContainer.isotope();
             $pagination.toggle( matchCounter > visibleItemsNum );
+            AOS.refresh();
         }
 
         function applyIsotopeFilter() {
@@ -770,6 +517,7 @@ jQuery(document).ready( function($) {
             $itemsContainer.isotope();
             $pagination.toggle( matchCounter > visibleItemsNum );
             $filterDropdown.find('option[value="'+filterValue+'"]').prop('selected', 'selected');
+            AOS.refresh();
         }
 
         function alignItemsHeight() {
@@ -827,94 +575,4 @@ jQuery(document).ready( function($) {
         });
         $pagination.on('click', '.link', showMoreItems);
     });
-
-
-
-    /**
-     * Maps
-     */
-    /*
-    var mapStyles = [
-        {
-            "stylers": [
-                {"saturation": -100}
-            ]
-        }
-    ];
-    var mapOptions = {
-        zoom: 15,
-        //center: new google.maps.LatLng(45.449501, -75.734891),
-        mapTypeId: google.maps.MapTypeId.ROADMAP,
-        noClear: true,
-        disableDefaultUI: false,
-        scrollwheel: false,
-        draggable: true,
-        zoomControl: true,
-        streetViewControl: false,
-        panControl: false,
-        mapTypeControl: false,
-        fullscreenControl: false
-    };
-    $('.mapContainer').each(function () {
-        var markers = [];
-        var $mapContainer = $(this);
-        var bounds = new google.maps.LatLngBounds();
-        var infoWindow = new google.maps.InfoWindow();
-        var map = new google.maps.Map(this, $.extend({}, mapOptions, {}));
-        map.setOptions({styles: mapStyles});
-        if ( $mapContainer.data('lat') && $mapContainer.data('lng') ) {
-            map.setCenter( new google.maps.LatLng( $mapContainer.data('lat'), $mapContainer.data('lng') ) );
-        }
-        $mapContainer.find('.mapMarker').each(function (index) {
-            var $item = $(this);
-            var lat = $(this).data('lat');
-            var lng = $(this).data('lng');
-            var iconWidth = $(this).data('icon-width');
-            var iconHeight = $(this).data('icon-height');
-            var iconUrlDefault = $(this).data('icon-url');
-            var iconUrlActive = $(this).data('icon-url-active');
-            var anchorLeft = $(this).data('anchor-left');
-            var anchorTop = $(this).data('anchor-top');
-            var markerIconDefault = {
-                url: iconUrlDefault,
-                size: new google.maps.Size(iconWidth, iconHeight),
-                origin: new google.maps.Point(0, 0),
-                anchor: new google.maps.Point(anchorLeft, anchorTop),
-                scaledSize: new google.maps.Size(iconWidth, iconHeight)
-            };
-            var markerIconActive = $.extend({}, markerIconDefault, {url:iconUrlActive?iconUrlActive:iconUrlDefault});
-            var marker = new google.maps.Marker({
-                id: index,
-                position: new google.maps.LatLng(lat, lng),
-                map: map,
-                draggable: false,
-                icon: markerIconDefault,
-                iconDefault: markerIconDefault,
-                iconActive: markerIconActive,
-                infoWindow: $item.html(),
-            });
-            google.maps.event.addListener(marker, 'click', function() {
-                markers.forEach(function (marker2, i) {
-                    marker2.setIcon( marker.id === marker2.id ? marker2.iconActive : marker2.iconDefault );
-                });
-                infoWindow.close();
-                if ( marker.infoWindow ) {
-                    infoWindow.setContent( marker.infoWindow );
-                    infoWindow.open( map, marker );
-                }
-            });
-            markers.push( marker );
-            bounds.extend( marker.getPosition() );
-        });
-        if ( markers.length > 1 ) {
-            map.fitBounds( bounds );
-        }
-        google.maps.event.addListener(map, 'click', function(event) {
-            infoWindow.close();
-            markers.forEach(function (marker, i) {
-                markers[i].setIcon( markers[i].iconDefault );
-            });
-        });
-    });
-    */
 });

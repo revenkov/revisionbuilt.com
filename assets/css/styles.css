@@ -1293,6 +1293,19 @@ address {
     width: 25%;
   }
 }
+.blogListing__categoryFilter .formField {
+  padding: 0;
+}
+.blogListing__categoryFilter .formField__title {
+  color: var(--color-neutral-900);
+}
+.blogListing__categoryFilter select {
+  border: 1px solid var(--color-neutral-700);
+  color: var(--color-neutral-900);
+  padding: 0 32px 0 16px;
+  background-position: right 22px center;
+  height: 56px;
+}
 @media (min-width: 640px) {
   .blogListing__items {
     display: flex;
@@ -1420,7 +1433,7 @@ address {
   .latestArticles__listing {
     grid-area: listing;
     grid-row: span 100;
-    padding: 0 calc(var(--grid-gap) / 2);
+    margin: 0 calc(var(--grid-gap) / -2);
   }
 }
 @media (min-width: 1200px) {

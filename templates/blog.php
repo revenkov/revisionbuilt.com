@@ -17,7 +17,7 @@ if ( !empty( $intro_content ) ) :
 ?>
 <div class="section">
     <div class="container">
-        <div class="introBlock"><?php echo $intro_content; ?></div>
+        <div class="introBlock" data-aos="fade-up"><?php echo $intro_content; ?></div>
     </div>
 </div>
 <?php endif; ?>
@@ -39,9 +39,9 @@ $posts = get_posts([
 <div class="section">
     <div class="container">
         <div class="blogListing">
-            <div class="blogListing__header">
+            <div class="blogListing__header" data-aos="fade-up">
                 <div class="blogListing__categoryFilter">
-                    <div class="formField">
+                    <div class="formField formField--fullWidth">
                         <label for="categoryField" class="formField__title"><?php _e('Category', 'selectrum'); ?></label>
                         <select id="categoryField" class="formField__input">
                             <option value="*"><?php _e('All', 'selectrum'); ?></option>
@@ -52,7 +52,7 @@ $posts = get_posts([
                     </div>
                 </div>
             </div>
-            <div class="blogListing__items">
+            <div class="blogListing__items" data-aos="fade-up">
                 <?php
                 foreach ( $posts as $post ) :
                     setup_postdata($post);
@@ -63,7 +63,7 @@ $posts = get_posts([
                     </div>
                 <?php endforeach; wp_reset_postdata(); ?>
             </div>
-            <div class="blogListing__pagination">
+            <div class="blogListing__pagination" data-aos="fade-up">
                 <?php
                 get_template_part('parts/link', false, [
                     'classes' => 'link--plus',

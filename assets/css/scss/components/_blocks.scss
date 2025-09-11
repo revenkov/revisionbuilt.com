@@ -832,6 +832,22 @@
     @include breakpoint( $xl ) {
       width: 25%;
     }
+
+    .formField {
+      padding: 0;
+
+      &__title {
+        color: var(--color-neutral-900);
+      }
+    }
+
+    select {
+      border: 1px solid var(--color-neutral-700);
+      color: var(--color-neutral-900);
+      padding: 0 32px 0 16px;
+      background-position: right 22px center;
+      height: 56px;
+    }
   }
 
   &__items {
@@ -974,7 +990,7 @@
     @include breakpoint( $laptop ) {
       grid-area: listing;
       grid-row: span 100;
-      padding: 0 calc( var(--grid-gap) / 2 );
+      margin: 0 calc( var(--grid-gap) / -2 );
     }
   }
 

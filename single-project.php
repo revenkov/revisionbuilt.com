@@ -13,16 +13,16 @@ $images = get_field('images');
     <div class="container">
         <div class="projectDetails">
             <?php if ( !empty( $categories ) ) : ?>
-                <div class="categories projectDetails__categories">
+                <div class="categories projectDetails__categories" data-aos="fade-up">
                     <div class="categories__category"><?php echo implode('</div><div class="categories__category">', array_column($categories, 'name')); ?></div>
                 </div>
             <?php endif; ?>
             <div class="projectDetails__cols">
                 <div class="projectDetails__col1">
-                    <h1 class="h2 projectDetails__title"><?php echo get_the_title(); ?></h1>
-                    <div class="projectDetails__subtitle text-lg"><?php echo $main_content['subtitle']; ?></div>
+                    <h1 class="h2 projectDetails__title" data-aos="fade-up"><?php echo get_the_title(); ?></h1>
+                    <div class="projectDetails__subtitle text-lg" data-aos="fade-up"><?php echo $main_content['subtitle']; ?></div>
                     <?php if ( !empty( $main_content['details'] ) ) : ?>
-                        <div class="projectDetails__items">
+                        <div class="projectDetails__items" data-aos="fade-up">
                             <?php foreach ( $main_content['details'] as $item ) : ?>
                                 <div class="projectDetails__item">
                                     <div class="projectDetails__itemTitle"><strong><?php echo $item['title']; ?></strong></div>
@@ -32,11 +32,11 @@ $images = get_field('images');
                         </div>
                     <?php endif; ?>
                     <?php if ( !empty( $main_content['content'] ) ) : ?>
-                        <div class="projectDetails__description"><?php echo $main_content['content']; ?></div>
+                        <div class="projectDetails__description" data-aos="fade-up"><?php echo $main_content['content']; ?></div>
                     <?php endif; ?>
                 </div>
                 <div class="projectDetails__col2">
-                    <div class="projectGallery">
+                    <div class="projectGallery" data-aos="fade-up">
                         <div class="projectGallery__slides">
                             <?php foreach ( $images as $key=>$image ) : ?>
                                 <div class="projectGallery__slide">
@@ -76,13 +76,13 @@ if ( !empty( $sections ) ) :
                         echo $section['content'] ?? false;
                         ?>
                         <div class="imageImageBlock">
-                            <div class="imageImageBlock__col1">
+                            <div class="imageImageBlock__col1" data-aos="fade-up">
                                 <div class="mediaBlock mediaBlock--formatted imageImageBlock__mediaBlock">
                                     <?php echo wp_get_attachment_image( $section['image_left']['ID'], 'full' ); ?>
                                     <div class="imageImageBlock__label"><?php echo $section['tag_image_left']; ?></div>
                                 </div>
                             </div>
-                            <div class="imageImageBlock__col2">
+                            <div class="imageImageBlock__col2" data-aos="fade-up">
                                 <div class="mediaBlock mediaBlock--formatted imageImageBlock__mediaBlock">
                                     <?php echo wp_get_attachment_image( $section['image_right']['ID'], 'full' ); ?>
                                     <div class="imageImageBlock__label"><?php echo $section['tag_image_right']; ?></div>
@@ -94,10 +94,10 @@ if ( !empty( $sections ) ) :
                     case 'testimonial_section':
                         ?>
                         <div class="testimonialsBlock">
-                            <div class="testimonialsBlock__textCol">
+                            <div class="testimonialsBlock__textCol" data-aos="fade-up">
                                 <?php echo $section['content'] ?? false; ?>
                             </div>
-                            <div class="testimonialsBlock__testimonialsCol">
+                            <div class="testimonialsBlock__testimonialsCol" data-aos="fade-up">
                                 <?php foreach ( $section['testimonials'] as $testimonial ) : ?>
                                     <div class="testimonial">
                                         <div class="testimonial__text">
@@ -113,18 +113,18 @@ if ( !empty( $sections ) ) :
                         break;
                     case 'image_full_width':
                         ?>
-                        <div class="mediaBlock fullWidthMediaBlock"><?php echo wp_get_attachment_image( $section['image']['ID'], 'full' ); ?></div>
+                        <div class="mediaBlock fullWidthMediaBlock" data-aos="fade-up"><?php echo wp_get_attachment_image( $section['image']['ID'], 'full' ); ?></div>
                         <?php
                         break;
                     case 'text_image':
                         ?>
                         <div class="imageTextBlock <?php echo (int)$section['image_position'] === 2 ? 'imageTextBlock--textLeft' : false; ?>">
-                            <div class="imageTextBlock__imageCol">
+                            <div class="imageTextBlock__imageCol" data-aos="fade-up">
                                 <div class="mediaBlock">
                                     <?php echo wp_get_attachment_image( $section['image']['ID'], 'full' ); ?>
                                 </div>
                             </div>
-                            <div class="imageTextBlock__textCol">
+                            <div class="imageTextBlock__textCol" data-aos="fade-up">
                                 <div class="imageTextBlock__textContainer">
                                     <?php echo $section['content']; ?>
 
@@ -150,7 +150,7 @@ $prev_post = get_previous_post();
 ?>
 <div class="section">
     <div class="container">
-        <nav class="postNav">
+        <nav class="postNav" data-aos="fade-up">
             <?php if ( $prev_post ) : ?>
             <a class="link link--prev postNav__prev" href="<?php echo get_permalink( $prev_post ); ?>" title="<?php echo __('Previous project', 'selectrum'); ?>">
                 <span class="link__text" data-text-mobile="<?php echo __('Prev. project', 'selectrum'); ?>" data-text-default="<?php echo __('Previous project', 'selectrum'); ?>"></span>

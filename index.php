@@ -6,7 +6,7 @@
 
 <div class="section">
     <div class="container">
-        <?php echo get_field('content'); ?>
+        <?php the_content(); ?>
     </div>
 </div>
 
