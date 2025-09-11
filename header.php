@@ -9,11 +9,13 @@ use Selectrum\WalkerNavMenu;
 	<meta name="viewport" content="width=device-width">
 	<meta name="format-detection" content="telephone=no">
 	<link rel="profile" href="http://gmpg.org/xfn/11">
-    <?php /*
+    <link rel="apple-touch-icon" href="<?php echo selectrum_get_image_url('favicon/apple-touch-icon.png'); ?>">
+    <link rel="icon" type="image/png" sizes="96x96" href="<?php echo selectrum_get_image_url('favicon/favicon-96x96.png'); ?>">
     <link rel="icon" type="image/x-icon" href="<?php echo selectrum_get_image_url('favicon/favicon.ico'); ?>">
-    <link rel="icon" type="image/png" href="<?php echo selectrum_get_image_url('favicon/favicon-32x32.png'); ?>" sizes="32x32" />
-    <link rel="icon" type="image/png" href="<?php echo selectrum_get_image_url('favicon/favicon-16x16.png'); ?>" sizes="16x16" />
-    */ ?>
+    <link rel="icon" type="image/svg" href="<?php echo selectrum_get_image_url('favicon/favicon.svg'); ?>">
+    <link rel="manifest" href="<?php echo selectrum_get_image_url('favicon/site.webmanifest'); ?>">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="theme-color" content="#ffffff">
 	<?php if ( is_singular() && pings_open( get_queried_object() ) ) : ?>
 		<link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>">
 	<?php endif; ?>
