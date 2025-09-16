@@ -104,8 +104,8 @@ jQuery(document).ready( function($) {
             $menu.btn.on('click', $menu.toggle);
             $menu.btnClose.on('click', $menu.close);
             $menu.list.on('click', '.menu-item-has-children > .menu-item-link-wrapper', function (e) {
-                e.preventDefault();
-                if ( windowWidth < 1360 ) {
+                if ( windowWidth < 1200 ) {
+                    e.preventDefault();
                     var $button = $(this);
                     var $item = $button.parents('.menu-item');
                     $item.find('.sub-menu').slideToggle();
@@ -148,6 +148,10 @@ jQuery(document).ready( function($) {
      */
     AOS.init({
         duration: 600,
+        offset: 50
+    });
+    $window.resize(function () {
+        AOS.refresh();
     });
 
 
@@ -193,7 +197,7 @@ jQuery(document).ready( function($) {
 
     let tinySlider = null;
     function featuredProjectsHandler() {
-        if ( windowWidth < 1200 && $('.projectsListing__items').length ) {
+        if ( windowWidth < 1200 && $('.featuredProjects .projectsListing__items').length ) {
             if ( tinySlider === null || tinySlider.destroy === null ) {
                 tinySlider = tns({
                     container: '.featuredProjects .projectsListing__items',
@@ -204,9 +208,9 @@ jQuery(document).ready( function($) {
                     autoplayHoverPause: true,
                     nav: false,
                     navPosition: 'bottom',
-                    controls: false,
-                    controlsPosition: 'top',
-                    controlsText: ['', ''],
+                    controls: true,
+                    controlsPosition: 'bottom',
+                    controlsText: ['',''],
                     responsive: {
                         0: {
                             items: 1
@@ -245,6 +249,8 @@ jQuery(document).ready( function($) {
             controlsText: ['', ''],
             controlsContainer: '.heroSlider__controls',
         });
+
+        $element.find('.heroSlider__mediaBlock').css('height', windowHeight + 'px');
     });
 
 
@@ -262,7 +268,9 @@ jQuery(document).ready( function($) {
             autoplayHoverPause: true,
             nav: true,
             navPosition: 'bottom',
-            controls: false,
+            controls: true,
+            controlsPosition: 'bottom',
+            controlsText: ['','']
         });
     });
 
@@ -313,7 +321,9 @@ jQuery(document).ready( function($) {
                     autoplayButtonOutput: false,
                     autoplayHoverPause: true,
                     nav: false,
-                    controls: false,
+                    controls: true,
+                    controlsPosition: 'bottom',
+                    controlsText: ['',''],
                     responsive: {
                         0: {
                             items: 1
@@ -352,12 +362,12 @@ jQuery(document).ready( function($) {
             "close"
         ],
         btnTpl: {
-            download: '<a download data-fancybox-download class="fancybox-button fancybox-button--download" title="{{DOWNLOAD}}" href="javascript:;"></a>',
-            zoom: '<button data-fancybox-zoom class="fancybox-button fancybox-button--zoom" title="{{ZOOM}}"></button>',
-            close: '<button data-fancybox-close class="fancybox-button fancybox-button--close" title="{{CLOSE}}"></button>',
-            arrowLeft: '<button data-fancybox-prev class="fancybox-button fancybox-button--arrow_left" title="{{PREV}}"></button>',
-            arrowRight: '<button data-fancybox-next class="fancybox-button fancybox-button--arrow_right" title="{{NEXT}}"></button>',
-            smallBtn: '<button type="button" data-fancybox-close class="fancybox-button fancybox-close-small" title="{{CLOSE}}"></button>'
+            //download: '<a download data-fancybox-download class="fancybox-button fancybox-button--download" title="{{DOWNLOAD}}" href="javascript:;"></a>',
+            //zoom: '<button data-fancybox-zoom class="fancybox-button fancybox-button--zoom" title="{{ZOOM}}"></button>',
+            //close: '<button data-fancybox-close class="fancybox-button fancybox-button--close" title="{{CLOSE}}"></button>',
+            //arrowLeft: '<button data-fancybox-prev class="fancybox-button fancybox-button--arrow_left" title="{{PREV}}"></button>',
+            //arrowRight: '<button data-fancybox-next class="fancybox-button fancybox-button--arrow_right" title="{{NEXT}}"></button>',
+            //smallBtn: '<button type="button" data-fancybox-close class="fancybox-button fancybox-close-small" title="{{CLOSE}}"></button>'
         },
         mobile: {
             clickContent: function(current, event) {

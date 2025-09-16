@@ -425,9 +425,11 @@ address {
   width: 1.25rem;
   height: 1.25rem;
   background: var(--color-primary-500);
+  transition: rotate 0.3s;
 }
 .link--plus:after {
   mask-image: var(--icon-plus);
+  rotate: 0deg !important;
 }
 .link--prev {
   flex-direction: row-reverse;
@@ -435,8 +437,18 @@ address {
 .link--prev:after {
   rotate: 180deg;
 }
+@media (hover: hover) {
+  .link--prev:hover:after {
+    rotate: 225deg !important;
+  }
+}
 .link--back:after {
   display: none;
+}
+@media (hover: hover) {
+  .link:hover:after {
+    rotate: -45deg;
+  }
 }
 @media (hover: hover) {
   .link:hover .link__text {

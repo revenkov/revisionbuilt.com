@@ -51,13 +51,16 @@
   }
 
   &__cols {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px 0;
     @include breakpoint( $tablet ) {
-      display: flex;
       margin-top: calc( -.5rem );
     }
   }
 
   &__col {
+    width: 100%;
     @include breakpoint( $tablet ) {
       width: 50%;
       max-width: 325px;

@@ -217,7 +217,7 @@
           opacity: 0;
           position: absolute;
           left: -20px;
-          top: 100%;
+          top: 80%;
           transition: visibility .3s, opacity .3s;
         }
 
@@ -377,6 +377,19 @@
         }
       }
 
+      &.open {
+        >.menu-item-link-wrapper {
+          >.menu-item-button {
+            &:after {
+              opacity: 0;
+              @include breakpoint( $laptop ) {
+                opacity: 1;
+              }
+            }
+          }
+        }
+      }
+
       &:hover {
         @media (hover: hover) {
           >.menu-item-link-wrapper {
@@ -428,6 +441,12 @@
 
             >.menu-item-button {
               color: var(--color-primary-500);
+            }
+          }
+
+          >.sub-menu {
+            @include breakpoint( $laptop ) {
+              top: 100%;
             }
           }
         }

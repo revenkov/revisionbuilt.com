@@ -31,9 +31,9 @@ $slider = get_field('slider');
         <div class="container">
             <div class="heroSlider__inner">
                 <div class="heroSlider__content">
-                    <h1 class="heroSlider__title" data-aos="fade-up"><?php echo $title; ?></h1>
-                    <hr data-aos="slide-right">
-                    <p class="heroSlider__subtitle text-lg" data-aos="fade-up"><?php echo $subtitle; ?></p>
+                    <h1 class="heroSlider__title" data-aos="fade-up" data-aos-offset="0"><?php echo $title; ?></h1>
+                    <hr data-aos="slide-right" data-aos-offset="0">
+                    <p class="heroSlider__subtitle text-lg" data-aos="fade-up" data-aos-offset="0"><span style="opacity: .8;"><?php echo $subtitle; ?></span></p>
                 </div>
                 <div class="heroSlider__controls" data-aos="fade-up">
                     <button class="heroSlider__button heroSlider__button--prev" type="button" title="Previous"></button>
@@ -56,21 +56,21 @@ $card_3 = get_field('card_3');
             <div class="cardsBlock__items">
                 <div class="card" data-aos="fade-up">
                     <div class="mediaBlock mediaBlock--formatted card__mediaBlock"><?php echo wp_get_attachment_image( $card_1['background_image']['ID'], 'full' ); ?></div>
-                    <a class="card__overlay" href="<?php echo get_the_permalink( $card_1['link'] ); ?>">
+                    <a class="card__overlay" href="<?php echo $card_1['link']; ?>">
                         <h2 class="card__title"><?php echo $card_1['title']; ?></h2>
                         <p class="card__text"><?php echo $card_1['subtitle']; ?></p>
                     </a>
                 </div>
                 <div class="card" data-aos="fade-up">
                     <div class="mediaBlock mediaBlock--formatted card__mediaBlock"><?php echo wp_get_attachment_image( $card_2['background_image']['ID'], 'full' ); ?></div>
-                    <a class="card__overlay" href="<?php echo get_the_permalink( $card_2['link'] ); ?>">
+                    <a class="card__overlay" href="<?php echo $card_2['link']; ?>">
                         <h2 class="card__title"><?php echo $card_2['title']; ?></h2>
                         <p class="card__text"><?php echo $card_2['subtitle']; ?></p>
                     </a>
                 </div>
                 <div class="card" data-aos="fade-up">
                     <div class="mediaBlock mediaBlock--formatted card__mediaBlock"><?php echo wp_get_attachment_image( $card_3['background_image']['ID'], 'full' ); ?></div>
-                    <a class="card__overlay" href="<?php echo get_the_permalink( $card_3['link'] ); ?>">
+                    <a class="card__overlay" href="<?php echo $card_3['link']; ?>">
                         <h2 class="card__title"><?php echo $card_3['title']; ?></h2>
                         <p class="card__text"><?php echo $card_3['subtitle']; ?></p>
                     </a>

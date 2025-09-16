@@ -36,5 +36,9 @@
     @include breakpoint( $laptop ) {
       padding: 72px 0;
     }
+
+    p {
+      opacity: .8;
+    }
   }
 }

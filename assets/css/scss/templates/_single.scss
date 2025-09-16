@@ -104,6 +104,7 @@
 
 
 .projectGallery {
+  position: relative;
 
   &__mediaBlock {
     --padding-bottom: 68.4%;
@@ -139,6 +140,65 @@
 
       &.tns-nav-active {
         background: var(--color-primary-500);
+      }
+    }
+  }
+
+  .tns-controls {
+    visibility: hidden;
+    opacity: 0;
+    position: absolute;
+    top: 50%;
+    width: 100%;
+    transition: visibility .3s, opacity .3s;
+
+    button {
+      position: absolute;
+      top: 0;
+      translate: 0 -50%;
+      width: 60px;
+      height: 60px;
+      border-radius: 100%;
+      background: var(--color-primary-500);
+      color: #ffffff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: opacity .3s, visibility .3s;
+
+      &:before {
+        content: '';
+        mask: var(--icon-arrow) no-repeat center;
+        mask-size: 50% auto;
+        background: currentColor;
+        width: 100%;
+        height: 100%;
+      }
+
+      &[data-controls="prev"] {
+        left: 20px;
+
+        &:before {
+          rotate: 180deg;
+        }
+      }
+
+      &[data-controls="next"] {
+        right: 20px;
+      }
+
+      &[disabled] {
+        visibility: hidden;
+        opacity: 0;
+      }
+    }
+  }
+
+  &:hover {
+    @media (hover: hover) {
+      .tns-controls {
+        visibility: visible;
+        opacity: 1;
       }
     }
   }

@@ -15,15 +15,7 @@ endif;
     <div class="container">
         <div class="featuredProjects">
             <div class="featuredProjects__header" data-aos="fade-up">
-                <div class="featuredProjects__headerLeft"><?php echo $projects['content']; ?></div>
-                <div class="featuredProjects__headerRight">
-                    <?php
-                    get_template_part('parts/link', false, [
-                        'title' => __('Explore our projects', 'selectrum'),
-                        'url' => selectrum_get_permalink( 2566 )
-                    ]);
-                    ?>
-                </div>
+                <?php echo $projects['content']; ?>
             </div>
             <div class="featuredProjects__listing">
                 <div class="projectsListing">
@@ -36,6 +28,14 @@ endif;
                     </div>
                 </div>
             </div>
+            <nav class="featuredProjects__nav" data-aos="fade-up">
+                <?php
+                get_template_part('parts/link', false, [
+                        'title' => __('Explore our projects', 'selectrum'),
+                        'url' => selectrum_get_permalink( 2566 )
+                ]);
+                ?>
+            </nav>
         </div>
     </div>
 </div>

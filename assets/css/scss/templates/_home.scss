@@ -2,9 +2,11 @@
   position: relative;
 
   &__mediaBlock {
-    --padding-bottom: 880px;
-    @media (orientation: landscape) {
-      --padding-bottom: 48.44%;
+    --padding-bottom: 0;
+    height: 100vh;
+    min-height: 560px;
+    @include breakpoint( $laptop ) {
+      height: 48.44vw;
     }
   }
 
