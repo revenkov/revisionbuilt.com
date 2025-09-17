@@ -1260,6 +1260,7 @@ address {
 @media (min-width: 1200px) {
   .faqBlock__col1 {
     width: calc(100% / var(--grid-columns) * 4);
+    padding-right: 2rem;
   }
 }
 .faqBlock__col2 {

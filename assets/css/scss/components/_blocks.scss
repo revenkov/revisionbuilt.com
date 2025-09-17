@@ -791,6 +791,7 @@
     width: 100%;
     @include breakpoint( $laptop ) {
       width: calc( 100% / var(--grid-columns) * 4 );
+      padding-right: 2rem;
     }
   }
 
