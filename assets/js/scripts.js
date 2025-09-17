@@ -384,7 +384,7 @@ jQuery(document).ready( function($) {
     $('.projectsListing--isotope').each(function (index, listingElement) {
         var $listing = $(listingElement);
         var $filterDropdown = $listing.find('select');
-        var $filterButtons = $listing.find('.blogCategories__buttons');
+        var $filterButtons = $listing.find('.projectsListing__buttons');
         var $itemsContainer = $listing.find('.projectsListing__items');
         var itemSelector = '.projectsListing__item';
         var $items = $itemsContainer.find(itemSelector);

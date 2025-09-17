@@ -1503,16 +1503,20 @@ address {
     margin: 0 calc(var(--grid-gap) / -2);
   }
 }
+.latestArticles__nav {
+  margin-top: -25px;
+}
 @media (min-width: 1200px) {
   .latestArticles__nav {
     grid-area: nav;
     padding: 0 calc(var(--grid-gap) / 2);
+    margin: 0;
   }
 }
 
 .latestArticlesListing {
   overflow: hidden;
-  padding: 0 43px 0 var(--container-padding-x);
+  padding: 0 43px 80px var(--container-padding-x);
   margin: 0 calc(-1 * var(--container-padding-x));
 }
 @media (min-width: 1200px) {
@@ -1550,6 +1554,50 @@ address {
 }
 .latestArticlesListing__item.tns-item.tns-slide-active {
   opacity: 1;
+}
+.latestArticlesListing .tns-controls {
+  position: absolute;
+  bottom: -80px;
+  right: -20px;
+  display: flex;
+  gap: 0.5rem;
+}
+@media (min-width: 640px) {
+  .latestArticlesListing .tns-controls {
+    right: 0;
+  }
+}
+.latestArticlesListing .tns-controls button {
+  width: 40px;
+  height: 40px;
+  border-radius: 100%;
+  background: var(--color-primary-500);
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 0.3s, visibility 0.3s;
+}
+.latestArticlesListing .tns-controls button:before {
+  content: "";
+  mask: var(--icon-arrow) no-repeat center;
+  mask-size: 40% auto;
+  background: currentColor;
+  width: 100%;
+  height: 100%;
+}
+.latestArticlesListing .tns-controls button[data-controls=prev] {
+  left: 20px;
+}
+.latestArticlesListing .tns-controls button[data-controls=prev]:before {
+  rotate: 180deg;
+}
+.latestArticlesListing .tns-controls button[data-controls=next] {
+  right: 20px;
+}
+.latestArticlesListing .tns-controls button[disabled] {
+  visibility: visible;
+  opacity: 0.3;
 }
 
 @media (min-width: 1200px) {

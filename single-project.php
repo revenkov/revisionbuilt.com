@@ -145,8 +145,8 @@ endif;
 
 
 <?php
-$next_post = get_next_post();
-$prev_post = get_previous_post();
+$next_post = get_previous_post();
+$prev_post = get_next_post();
 ?>
 <div class="section">
     <div class="container">
