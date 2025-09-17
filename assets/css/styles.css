@@ -2575,9 +2575,6 @@ body.scrolled .btnMenu {
     border-bottom-color: var(--color-primary-500);
   }
 }
-.siteNav .primaryMenu > li.current-menu-ancestor > .menu-item-link-wrapper > .menu-item-button:after {
-  opacity: 0;
-}
 @media (min-width: 1200px) {
   .siteNav .primaryMenu > li.current-menu-ancestor > .menu-item-link-wrapper > .menu-item-button:after {
     opacity: 1;
@@ -2588,6 +2585,14 @@ body.scrolled .btnMenu {
 }
 .siteNav .primaryMenu > li.current-menu-item > .menu-item-link-wrapper > a {
   color: #ffffff;
+}
+.siteNav .primaryMenu > li.open > .menu-item-link-wrapper > .menu-item-button:after {
+  opacity: 0;
+}
+@media (min-width: 1200px) {
+  .siteNav .primaryMenu > li.open > .menu-item-link-wrapper > .menu-item-button:after {
+    opacity: 1;
+  }
 }
 .siteNav .primaryMenu > li.menu-item-has-children {
   cursor: pointer;
@@ -2600,14 +2605,6 @@ body.scrolled .btnMenu {
 @media (hover: hover) {
   .siteNav .primaryMenu > li.menu-item-has-children:hover > .sub-menu {
     visibility: visible;
-    opacity: 1;
-  }
-}
-.siteNav .primaryMenu > li.open > .menu-item-link-wrapper > .menu-item-button:after {
-  opacity: 0;
-}
-@media (min-width: 1200px) {
-  .siteNav .primaryMenu > li.open > .menu-item-link-wrapper > .menu-item-button:after {
     opacity: 1;
   }
 }
