@@ -3412,10 +3412,14 @@ body.scrolled .btnMenu {
     width: 25%;
   }
 }
+.homeLatestArticles__nav {
+  margin-top: -25px;
+}
 @media (min-width: 1200px) {
   .homeLatestArticles__nav {
     grid-area: nav;
     padding: 0 calc(var(--grid-gap) / 2) 10px;
+    margin: 0;
     text-align: right;
   }
 }

@@ -423,9 +423,11 @@
   }
 
   &__nav {
+    margin-top: -25px;
     @include breakpoint( $laptop ) {
       grid-area: nav;
       padding: 0 calc( var(--grid-gap) / 2 ) 10px;
+      margin: 0;
       text-align: right;
     }
   }
